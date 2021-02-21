@@ -2,7 +2,7 @@ import { join } from 'path'
 import { spawn, ChildProcess } from 'child_process'
 import { webpack } from 'webpack'
 import ora from 'ora'
-import * as chalk from 'chalk'
+import { yellow, gray, green } from 'chalk'
 import minimist from 'minimist'
 import electron from 'electron'
 import { config, compileHandle } from './webpack.config'
@@ -16,14 +16,14 @@ const compiler = webpack(config(NODE_ENV, 'main'))
 const spinner = ora(`${TAG} Electron build...`)
 
 compiler.hooks.beforeRun.tap('编译前提示', compParam => {
-  if (argv.watch) console.log(chalk.yellow(TAG), 'compiling...')
+  if (argv.watch) console.log(yellow(TAG), 'compiling...')
   else spinner.start()
 })
 
 compiler.hooks.afterCompile.tap('编译后提示', compParam => {
   if (argv.watch) {
     const files = Array.from(compiler.modifiedFiles || [])
-    console.log(chalk.gray(files.map(f => `change: ${f}`).join('\n')))
+    console.log(gray(files.map(f => `change: ${f}`).join('\n')))
   } else spinner.stop()
 })
 
@@ -39,6 +39,6 @@ if (argv.watch) {
   })
 } else {
   compiler.run(compileHandle(TAG, bool => {
-    bool && console.log(chalk.green('---- build success. ----'))
+    bool && console.log(green('---- build success. ----'))
   }))
 }

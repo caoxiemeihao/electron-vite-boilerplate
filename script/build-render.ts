@@ -2,7 +2,7 @@ const NODE_ENV = process.env.NODE_ENV = 'development'
 
 import { webpack } from 'webpack'
 import ora from 'ora'
-import * as chalk from 'chalk'
+import { green } from 'chalk'
 import { config, compileHandle } from './webpack.config'
 
 const TAG = '[build-render]'
@@ -14,5 +14,5 @@ compiler.hooks.beforeRun.tap('编译前提示', compParam => spinner.start())
 compiler.hooks.afterCompile.tap('编译后提示', compParam => spinner.stop())
 
 compiler.run(compileHandle(TAG, bool => {
-  bool && console.log(chalk.green('---- build success. ----'))
+  bool && console.log(green('---- build success. ----'))
 }))
