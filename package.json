@@ -67,6 +67,7 @@
     "@types/minimist": "^1.2.1",
     "@types/node": "^14.14.31",
     "@vitejs/plugin-vue": "^1.1.4",
+    "@vitejs/plugin-vue-jsx": "^1.1.0",
     "@vue/babel-plugin-jsx": "^1.0.3",
     "@vue/compiler-sfc": "^3.0.5",
     "babel-loader": "^8.2.2",

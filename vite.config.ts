@@ -2,11 +2,15 @@ require('dotenv').config({ path: join(__dirname, '.env') })
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import { join } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    vueJsx(), // 自动注入 import { h } from 'vue'
+  ],
   root: join(__dirname, 'src/render'),
   base: './', // index.html 中静态资源加载位置
   server: {
@@ -19,5 +23,9 @@ export default defineConfig(({ mode }) => ({
       '@root': __dirname,
     },
   },
-  define: { APP_ENV: mode },
+  define: { APP_ENV: `'${mode}'` },
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+  },
 }))

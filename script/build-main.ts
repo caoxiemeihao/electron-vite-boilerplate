@@ -9,6 +9,8 @@ import { config, compileHandle } from './webpack.config'
 import { waitOn } from './utils'
 import { main } from '../package.json'
 
+require('dotenv').config({ path: join(__dirname, '../.env') })
+
 const TAG = '[build-main]'
 const argv = minimist(process.argv.slice(2))
 const NODE_ENV = process.env.NODE_ENV = argv.env
