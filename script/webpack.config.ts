@@ -29,6 +29,7 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
             options: {
               presets: ["@babel/preset-typescript"],
               plugins: [
+                ["@babel/plugin-proposal-class-properties", { "loose": true }],
                 ...(isrender
                   ? [
                     '@vue/babel-plugin-jsx',
@@ -67,7 +68,7 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
       alias: {
         '@': resolveRoot('src/render'), // 给 render -> vue 用
         '@src': resolveRoot('src'),
-        '@root*': resolveRoot(),
+        '@root': resolveRoot(),
       },
       fallback: {
         path: false,
