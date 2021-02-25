@@ -52,7 +52,10 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
         },
         {
           test: /\.(png|jpg|gif|svg)$/i,
-          use: 'file-loader',
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+          },
         },
         {
           test: /\.css$/,
