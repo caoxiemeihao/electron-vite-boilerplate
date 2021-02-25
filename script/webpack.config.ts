@@ -22,25 +22,32 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
     module: {
       rules: [
         {
-          test: /\.(ts|tsx|vue)$/,
+          test: /\.ts$/,
           exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ["@babel/preset-typescript"],
-              plugins: [
-                ["@babel/plugin-proposal-class-properties", { "loose": true }],
-                ...(isrender
-                  ? [
-                    '@vue/babel-plugin-jsx',
-                    ["import", { "libraryName": "ant-design-vue", "libraryDirectory": "es", "style": "css" }],
-                  ]
-                  : [
-
-                  ]),
-              ],
-            },
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              "@babel/plugin-transform-typescript",
+              ["@babel/plugin-proposal-class-properties", { "loose": true }],
+            ],
           },
+        },
+        {
+          test: /\.tsx$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              "@babel/plugin-transform-typescript",
+              "@vue/babel-plugin-jsx",
+              ["import", { "libraryName": "ant-design-vue", "libraryDirectory": "es", "style": "css" }],
+            ]
+          },
+        },
+        {
+          test: /\.vue$/,
+          exclude: /node_modules/,
+          loader: 'vue-loader',
         },
         {
           test: /\.(png|jpg|gif|svg)$/i,
