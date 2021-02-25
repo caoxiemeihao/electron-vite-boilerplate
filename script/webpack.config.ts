@@ -3,6 +3,7 @@ import { Configuration, Stats } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { red, green } from 'chalk'
 import { resolveRoot } from './utils'
+import { VueLoaderPlugin } from 'vue-loader'
 
 export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render') => {
   const isdev = env === 'development'
@@ -22,7 +23,7 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
     module: {
       rules: [
         {
-          test: /\.(ts|tsx|vue)$/,
+          test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
@@ -40,6 +41,13 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
                   ]),
               ],
             },
+          },
+        },
+        {
+          test: /\.(vue)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'vue-loader'
           },
         },
         {
@@ -89,6 +97,7 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
         ] : [
 
         ]),
+      new VueLoaderPlugin()
     ],
   }
   return conf
