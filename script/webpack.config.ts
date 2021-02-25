@@ -1,3 +1,4 @@
+import { join } from 'path'
 import { readFileSync } from 'fs'
 import { Configuration, Stats } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -38,7 +39,7 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
           loader: 'babel-loader',
           options: {
             plugins: [
-              "@babel/plugin-transform-typescript",
+              ["@babel/plugin-transform-typescript", { "isTSX": true }],
               "@vue/babel-plugin-jsx",
               ["import", { "libraryName": "ant-design-vue", "libraryDirectory": "es", "style": "css" }],
             ]
@@ -47,7 +48,7 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
         {
           test: /\.vue$/,
           exclude: /node_modules/,
-          loader: 'vue-loader',
+          loader: join(__dirname, 'vue-loader.js'),
         },
         {
           test: /\.(png|jpg|gif|svg)$/i,
