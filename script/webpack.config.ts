@@ -1,6 +1,6 @@
 import { join } from 'path'
 import { readFileSync } from 'fs'
-import { Configuration, Stats } from 'webpack'
+import { Configuration, Stats, DefinePlugin } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { red, green } from 'chalk'
 import { resolveRoot } from './utils'
@@ -85,22 +85,25 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
         path: false,
       },
     },
-    plugins: [
-      ...(isrender
-        ? [
-          new HtmlWebpackPlugin({
-            templateContent: () => {
-              const html = readFileSync(resolveRoot('src/render/index.html'), 'utf8')
-              return html
-                .split('\n')
-                .filter(line => !line.includes('/main.ts')) // 去掉 vite 开发期 script
-                .join('\n')
-            }
-          }),
-        ] : [
+    plugins: isrender
+      ? [
+        new HtmlWebpackPlugin({
+          templateContent: () => {
+            const html = readFileSync(resolveRoot('src/render/index.html'), 'utf8')
+            return html
+              .split('\n')
+              .filter(line => !line.includes('/main.ts')) // 去掉 vite 开发期 script
+              .join('\n')
+          }
+        }),
+        new DefinePlugin({
+          // https://github.com/vuejs/vue-next/blob/master/packages/vue/README.md#bundler-build-feature-flags
+          __VUE_OPTIONS_API__: true,
+          __VUE_PROD_DEVTOOLS__: false,
+        })
+      ] : [
 
-        ]),
-    ],
+      ],
   }
   return conf
 }
