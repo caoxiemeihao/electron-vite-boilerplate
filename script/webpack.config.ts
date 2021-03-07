@@ -2,6 +2,7 @@ import { join } from 'path'
 import { readFileSync } from 'fs'
 import { Configuration, Stats, DefinePlugin } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { VueLoaderPlugin } from 'vue-loader'
 import { red, green } from 'chalk'
 import { resolveRoot } from './utils'
 
@@ -48,7 +49,8 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
         {
           test: /\.vue$/,
           exclude: /node_modules/,
-          loader: join(__dirname, 'vue-loader.js'),
+          loader: 'vue-loader',
+          // loader: join(__dirname, 'vue-loader.js'),
         },
         {
           test: /\.(png|jpg|gif|svg)$/i,
@@ -100,7 +102,10 @@ export const config = (env: typeof process.env.NODE_ENV, proc: 'main' | 'render'
           // https://github.com/vuejs/vue-next/blob/master/packages/vue/README.md#bundler-build-feature-flags
           __VUE_OPTIONS_API__: true,
           __VUE_PROD_DEVTOOLS__: false,
-        })
+        }),
+        // https://vue-loader.vuejs.org/zh/guide/
+        // 请确保引入这个插件！
+        new VueLoaderPlugin(),
       ] : [
 
       ],
