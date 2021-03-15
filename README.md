@@ -19,3 +19,7 @@
 ![](https://raw.githubusercontent.com/caoxiemeihao/electron-vue-vite/master/screenshot/login.png)
 
 ![](https://raw.githubusercontent.com/caoxiemeihao/electron-vue-vite/master/screenshot/main-antd.png)
+
+## License
+
+[MIT License](https://opensource.org/licenses/MIT)
