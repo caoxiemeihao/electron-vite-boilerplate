@@ -2,7 +2,7 @@ const { ipcRenderer } = require('electron')
 import { defineComponent, reactive, ref } from 'vue'
 import { Button, Input, Form, Tabs } from 'ant-design-vue'
 import { UserOutlined, CloseOutlined, HomeOutlined, LockOutlined } from '@ant-design/icons-vue'
-import { LOGIN, LOGIN_CLOSE } from '@src/common/constant/event.ts'
+import { LOGIN, LOGIN_CLOSE } from '@src/common/constant/event'
 import './index.less'
 
 enum TabKey {
