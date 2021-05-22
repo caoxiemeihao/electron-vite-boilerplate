@@ -4,13 +4,19 @@ import { createApp } from 'vue'
 import App from './App'
 import router from './router'
 
-// vite 会编译 import 的形式；所以 electron 及 node.js 内置模块用 require 形式
-const os = require('os')
-const fs = require('fs')
-const { ipcRenderer } = require('electron')
-const Store = require('electron-store')
+import os from 'os'
+import fs from 'fs'
 
-// 开发期全部引入 antd.css；打包期用 babel-plugin-import 按需引入样式
+import {
+  ipcRenderer,
+  remote,
+} from 'electron'
+import Store from 'electron-store'
+// 开发期 electron、electron-store 会被 script/plugins/index.ts -> esm2cjs 编译成 commonjs
+// const { ipcRenderer } = require('electron')
+// const Store = require('electron-store')
+
+// 开发期全部引入 antd.css 打包期用 babel-plugin-import 按需引入样式
 // isdev && require('ant-design-vue/dist/antd.css')
 import 'ant-design-vue/dist/antd.css'
 
@@ -20,6 +26,7 @@ import './index.less'
 console.log('os:', os)
 console.log('fs:', fs)
 console.log('ipcRenderer:', ipcRenderer)
+console.log('remote:', remote)
 console.log('electron-store:', new Store())
 
 createApp(App)

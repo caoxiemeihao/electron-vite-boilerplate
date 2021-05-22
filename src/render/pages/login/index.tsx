@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron')
+import { ipcRenderer } from 'electron'
 import { defineComponent, reactive, ref } from 'vue'
 import { Button, Input, Form, Tabs } from 'ant-design-vue'
 import { UserOutlined, CloseOutlined, HomeOutlined, LockOutlined } from '@ant-design/icons-vue'
