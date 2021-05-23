@@ -974,7 +974,7 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-acorn@^8.2.1:
+acorn@^8.2.1, acorn@^8.2.4:
   version "8.2.4"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.2.4.tgz#caba24b08185c3b56e3168e97d15ed17f4d31fd0"
   integrity sha512-Ibt84YwBDDA890eDiDCEqcbwvHlBvzzDkU2cGBBDDI1QWT12jTiXIOn2CIw5KK4i6N5Z2HUxwYjzriDyqaqqZg==
@@ -3939,6 +3939,13 @@ vite@^2.3.3:
     rollup "^2.38.5"
   optionalDependencies:
     fsevents "~2.3.1"
+
+vitejs-plugin-electron@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vitejs-plugin-electron/-/vitejs-plugin-electron-0.1.0.tgz#308f603628ffc9a1821ffa9a7f7d4f1dc446796f"
+  integrity sha512-ftoKqmyaK7DsHe7FXPcOomUoZZ9EqpjoWGbRaXdXryE51RwpxI08ld6y/DEc08xErwu4SesTnLLQi8ZCet395A==
+  dependencies:
+    acorn "^8.2.4"
 
 vue-loader@^16.2.0:
   version "16.2.0"
