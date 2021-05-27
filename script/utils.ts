@@ -20,8 +20,11 @@ export function waitOn(arg0: { port: string | number; interval?: number; }) {
   })
 }
 
-/** cjs2esm */
-export function cjs2esm() {
+/** 
+ * cjs2esm
+ * @deprecated
+ */
+function cjs2esm() {
   return {
     name: '@rollup/plugin-cjs2esm',
     transform(code: string, filename: string) {
