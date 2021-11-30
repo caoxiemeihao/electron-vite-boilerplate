@@ -1,17 +1,16 @@
 {
-  "name": "electron-vue",
+  "name": "vite-webpack-electron",
   "version": "0.0.1",
-  "main": "dist/main/_.js",
+  "main": "dist/main/index.js",
   "author": "草鞋没号 <308487730@qq.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=14.17.0"
+  },
   "scripts": {
-    "dev": "npm run dev:all",
-    "dev:all": "concurrently -n=vue,ele -c=green,blue \"npm run dev:vue\" \"npm run dev:ele\"",
-    "dev:vue": "vite",
-    "dev:ele": "node -r ts-node/register script/build-main --env=development --watch",
-    "build:vue": "node -r ts-node/register script/build-render",
-    "build:ele": "node -r ts-node/register script/build-main --env=production",
-    "build": "rimraf dist && npm run build:vue && npm run build:ele && electron-builder"
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "package": "rimraf dist && npm run build && electron-builder"
   },
   "build": {
     "appId": "308487730@qq.com",
@@ -26,10 +25,6 @@
       "!node_modules",
       "dist/**"
     ],
-    "extraResources": {
-      "from": "src/preload",
-      "to": "app/src/preload"
-    },
     "mac": {
       "artifactName": "${productName}_${version}.${ext}",
       "target": [
@@ -56,48 +51,32 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
-    "ant-design-vue": "^2.1.6",
-    "vue": "^3.0.11",
-    "vue-router": "^4.0.8"
+    "ant-design-vue": "^2.2.8",
+    "vue": "^3.2.23",
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-transform-typescript": "^7.14.3",
-    "@types/minimist": "^1.2.1",
-    "@types/node": "^15.6.0",
-    "@vitejs/plugin-vue": "^1.2.2",
-    "@vitejs/plugin-vue-jsx": "^1.1.4",
-    "@vue/babel-plugin-jsx": "^1.0.6",
-    "@vue/compiler-sfc": "^3.0.11",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/plugin-transform-typescript": "^7.16.1",
+    "@vitejs/plugin-vue": "^1.10.1",
     "babel-loader": "^8.2.2",
-    "babel-plugin-import": "^1.13.3",
     "chalk": "^4.1.0",
-    "concurrently": "^5.3.0",
-    "css-loader": "^5.0.2",
-    "electron": "12.0.9",
-    "electron-builder": "^22.8.0",
-    "electron-store": "^8.0.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.2.0",
-    "less": "^4.1.1",
-    "less-loader": "^8.0.0",
+    "electron": "16.0.2",
+    "electron-builder": "^22.14.5",
+    "electron-store": "^8.0.1",
+    "less": "^4.1.2",
     "minimist": "^1.2.5",
-    "ora": "^5.0.0",
+    "ora": "^6.0.1",
     "rimraf": "^3.0.2",
-    "style-loader": "^2.0.0",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4",
-    "url-loader": "^4.1.1",
-    "vite": "^2.3.3",
-    "vitejs-plugin-electron": "^0.1.0",
-    "vue-loader": "^16.2.0",
-    "webpack": "^5.37.1"
+    "typescript": "^4.5.2",
+    "vite": "^2.6.14",
+    "webpack": "^5.64.4"
   },
   "keywords": [
     "vite",
     "electron",
     "vue3",
-    "rollup"
+    "webpack"
   ]
 }
