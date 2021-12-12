@@ -11,7 +11,8 @@
     "baseUrl": "./",
     "strict": true,
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["src/renderer"],
+      "src/*": ["src/*"]
     },
     "allowSyntheticDefaultImports": true
   }
