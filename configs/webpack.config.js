@@ -22,5 +22,12 @@ module.exports = function (name) {
         },
       ],
     },
+    resolve: {
+      alias: {
+        '@': path.join(__dirname, '../src/renderer'),
+        'src': path.join(__dirname, '../src'),
+      },
+      extensions: ['.ts', '.tsx', '.js', '.json'],
+    },
   };
 };
