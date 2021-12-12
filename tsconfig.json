@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "CommonJS",
+    "target": "ES2019",
+    "module": "ESNext",
     "moduleResolution": "node",
     "importHelpers": true,
     "jsx": "react",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "sourceMap": true,
+    "skipLibCheck": true,
     "baseUrl": "./",
     "strict": true,
     "paths": {

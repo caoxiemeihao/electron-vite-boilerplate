@@ -1,59 +1,56 @@
-/**
- * electron 主文件
- */
+import os from 'os'
 import { join } from 'path'
-import { app } from 'electron'
-import { Login, Main } from './window'
-import store, { USER_INFO } from '@src/common/utils/store'
-import { User } from './interfaces/user'
-import dotenv from 'dotenv'
-import {
-  LOGIN,
-  LOGIN_CLOSE,
-  LOGOUT,
-  TOGGLE_DEVTOOLS,
-} from '@src/common/constant/event'
+import { app, BrowserWindow } from 'electron'
+import './samples/electron-store'
 
-dotenv.config({ path: join(__dirname, '../../.env') })
+const isWin7 = os.release().startsWith('6.1')
+if (isWin7) app.disableHardwareAcceleration()
 
-function init() {
-  const loginWin = new Login()
-  const mainWin = new Main()
-
-  const mainOpen = () => {
-    mainWin.open()
-    const unsubscribeDevtool = mainWin.subscribe(TOGGLE_DEVTOOLS, win => {
-      mainWin.win?.webContents.toggleDevTools()
-    })
-    const unsubscribeLogin = mainWin.subscribe(LOGOUT, win => {
-      unsubscribeDevtool()
-      unsubscribeLogin()
-      mainWin.close()
-      loginOpen()
-    })
-  }
-  const loginOpen = () => {
-    loginWin.open()
-    const unsubscribeLogin = loginWin.subscribe(LOGIN, win => {
-      unsubscribeLogin()
-      loginWin.close()
-      mainOpen()
-    })
-    const unsubscribeClose = loginWin.subscribe(LOGIN_CLOSE, win => {
-      unsubscribeClose()
-      loginWin.close()
-      app.exit(0)
-    })
-  }
-
-  const user: User = (store.get(USER_INFO) ?? {}) as User
-
-  if (user.token) {
-    mainOpen()
-  } else {
-    loginOpen()
-  }
-
+if (!app.requestSingleInstanceLock()) {
+  app.quit()
+  process.exit(0)
 }
 
-app.whenReady().then(init)
+let win: BrowserWindow | null = null
+
+async function mainWin() {
+  win = new BrowserWindow({
+    title: 'Main window',
+    webPreferences: {
+      preload: join(__dirname, '../preload/index.cjs')
+    },
+  })
+
+  if (app.isPackaged) {
+    win.loadFile(join(__dirname, '../renderer/index.html'))
+  } else {
+    const pkg = await import('../../package.json')
+    const url = `http://${pkg.env.HOST || '127.0.0.1'}:${pkg.env.PORT}`
+
+    win.loadURL(url)
+    win.maximize()
+    win.webContents.openDevTools()
+  }
+
+  // Test active push message to Renderer-process.
+  win.webContents.on('did-finish-load', () => {
+    win?.webContents.send('main-process-message', (new Date).toLocaleString())
+  })
+}
+
+app.whenReady().then(mainWin)
+
+app.on('window-all-closed', () => {
+  win = null
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+app.on('second-instance', () => {
+  if (win) {
+    // Someone tried to run a second instance, we should focus our window.
+    if (win.isMinimized()) win.restore()
+    win.focus()
+  }
+})
