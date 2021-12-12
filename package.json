@@ -8,8 +8,8 @@
     "node": ">=14.17.0"
   },
   "scripts": {
-    "dev": "node scripts/dev.mjs",
-    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.js",
+    "build": "node scripts/build.js",
     "package": "rimraf dist && npm run build && electron-builder"
   },
   "build": {
@@ -58,20 +58,22 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
-    "@babel/plugin-transform-typescript": "^7.16.1",
     "@vitejs/plugin-vue": "^1.10.1",
     "babel-loader": "^8.2.2",
     "chalk": "^4.1.0",
     "electron": "16.0.2",
     "electron-builder": "^22.14.5",
     "electron-store": "^8.0.1",
+    "i": "^0.3.7",
     "less": "^4.1.2",
     "minimist": "^1.2.5",
+    "npm": "^8.3.0",
     "ora": "^6.0.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.5.2",
-    "vite": "^2.6.14",
-    "webpack": "^5.64.4"
+    "typescript": "^4.5.3",
+    "vite": "^2.7.1",
+    "webpack": "^5.65.0",
+    "webpack-merge": "^5.8.0"
   },
   "keywords": [
     "vite",
