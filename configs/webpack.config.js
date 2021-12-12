@@ -1,21 +1,26 @@
 const path = require('path');
-const { webpack } = require('webpack');
-const webapck = require('webpack');
 
 /**
- * @type {import('webpack').Configuration}
+ * @type {(name: string) => import('webpack').Configuration}
  */
-const config = {
-  entry: {
-    input: path.join(__dirname, '../src/main/index.ts'),
-  },
-  output: {
-    // The output directory as **absolute path** (required).
-    path: path.join(__dirname, '../dist'),
-    chunkFilename: '[name].js',
-  },
+module.exports = function (name) {
+  return {
+    target: `electron-${name}`,
+    entry: {
+      index: path.join(__dirname, `../src/${name}/index.ts`),
+    },
+    output: {
+      // The output directory as **absolute path** (required).
+      path: path.join(__dirname, `../dist/${name}`),
+    },
+    module: {
+      rules: [
+        {
+          // '.tsx' for Preload-script.
+          test: /\.(ts|tsx)$/,
+          loader: 'babel-loader',
+        },
+      ],
+    },
+  };
 };
-
-const compiler = webpack(config);
-
-
