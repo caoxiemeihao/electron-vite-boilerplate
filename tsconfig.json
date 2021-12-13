@@ -1,4 +1,5 @@
 {
+  "extends": "./paths.json",
   "compilerOptions": {
     "target": "ES2019",
     "module": "ESNext",
@@ -10,10 +11,6 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "strict": true,
-    "paths": {
-      "@/*": ["src/renderer"],
-      "src/*": ["src/*"]
-    },
     "allowSyntheticDefaultImports": true
   }
 }

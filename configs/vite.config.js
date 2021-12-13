@@ -1,7 +1,7 @@
 const path = require('path');
 const { defineConfig } = require('vite');
 const react = require('@vitejs/plugin-react');
-const styleImport = require('vite-plugin-style-import');
+const styleImport = require('vite-plugin-style-import').default;
 const pkg = require('../package.json');
 
 // https://vitejs.dev/config/

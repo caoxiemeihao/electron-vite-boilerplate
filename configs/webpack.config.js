@@ -12,6 +12,7 @@ module.exports = function (name) {
     output: {
       // The output directory as **absolute path** (required).
       path: path.join(__dirname, `../dist/${name}`),
+      chunkFilename: '[name]-[chunkhash:9].js',
     },
     module: {
       rules: [
@@ -29,6 +30,9 @@ module.exports = function (name) {
         'src': path.join(__dirname, '../src'),
       },
       extensions: ['.ts', '.tsx', '.js', '.json'],
+    },
+    optimization: {
+      minimize: false,
     },
   };
 };
