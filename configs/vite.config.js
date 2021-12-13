@@ -21,6 +21,7 @@ module.exports = defineConfig({
   base: './',
   build: {
     emptyOutDir: true,
+    minify: false,
     outDir: '../../dist/renderer',
   },
   css: {
