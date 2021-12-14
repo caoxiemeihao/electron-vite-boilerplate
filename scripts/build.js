@@ -17,7 +17,7 @@ async function webpackBuild() {
   for (const [name, config] of Object.entries(configs)) {
     const bool = await new Promise(resolve => {
       const compiler = webpack(require(`../configs/${config}`))
-      compiler.run(utils.callbackFunction(TAG, bool => {
+      compiler.run(utils.callbackFunction(`${TAG} ${name}:`, bool => {
         resolve(bool);
       }))
     });
@@ -28,7 +28,9 @@ async function webpackBuild() {
 
 // build for Renderer-process
 async function viteBuild() {
-
+  return viteBuildFn({
+    configFile: 'configs/vite.config.js',
+  })
 }
 
 // bootstrap
