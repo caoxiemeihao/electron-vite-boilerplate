@@ -1,7 +1,6 @@
-import { Stats } from 'webpack'
+import { Compiler } from 'webpack'
 
 export type CallbackFunction = (tag: string, cb?: (bool: boolean) => void)
-  => (error: Error, stats: Stats)
-    => void
+  => Parameters<Compiler['run']>[0]
 
 export const callbackFunction: CallbackFunction
