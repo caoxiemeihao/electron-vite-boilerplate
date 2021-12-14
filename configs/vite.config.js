@@ -1,7 +1,7 @@
 const path = require('path');
 const { defineConfig } = require('vite');
 const react = require('@vitejs/plugin-react');
-const styleImport = require('vite-plugin-style-import').default;
+const styleImport = require('vite-plugin-style-import');
 const pkg = require('../package.json');
 
 // https://vitejs.dev/config/
@@ -10,12 +10,8 @@ module.exports = defineConfig({
   root: path.join(__dirname, '../src/renderer'),
   plugins: [
     react(),
-    styleImport({
-      libs: [{
-        libraryName: 'antd',
-        esModule: true,
-        resolveStyle: (name) => `antd/es/${name}/style/index`,
-      },],
+    styleImport.default({
+      resolves: [styleImport.AntdResolve()],
     }),
   ],
   base: './',
