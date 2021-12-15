@@ -29,7 +29,7 @@ async function webpackBuild() {
 // build for Renderer-process
 async function viteBuild() {
   return viteBuildFn({
-    configFile: 'configs/vite.config.js',
+    configFile: 'configs/vite.config.ts',
   })
 }
 

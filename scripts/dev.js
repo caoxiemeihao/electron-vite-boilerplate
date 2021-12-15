@@ -40,7 +40,7 @@ async function startPreload(viteServer) {
 
 async function startVite() {
   return createServer({
-    configFile: 'configs/vite.config.js',
+    configFile: 'configs/vite.config.ts',
   });
 }
 

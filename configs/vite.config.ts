@@ -1,17 +1,17 @@
-const path = require('path');
-const { defineConfig } = require('vite');
-const react = require('@vitejs/plugin-react');
-const styleImport = require('vite-plugin-style-import');
-const pkg = require('../package.json');
+import path from 'path'
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import styleImport, { AntdResolve } from 'vite-plugin-style-import'
+import pkg from '../package.json'
 
 // https://vitejs.dev/config/
-module.exports = defineConfig({
+export default defineConfig({
   mode: process.env.NODE_ENV,
   root: path.join(__dirname, '../src/renderer'),
   plugins: [
     react(),
-    styleImport.default({
-      resolves: [styleImport.AntdResolve()],
+    styleImport({
+      resolves: [AntdResolve()],
     }),
   ],
   base: './',
