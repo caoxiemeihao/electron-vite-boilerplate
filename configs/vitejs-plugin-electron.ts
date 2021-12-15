@@ -76,7 +76,7 @@ export {
           const requireTpl = `const __nodeModule = require('${moduleId}');`
           const declaresTpl = attrs.map(attr => `const ${attr} = __nodeModule.${attr}`).join(';\n') + ';'
           const exportTpl = `export {\n  ${attrs.join(',\n  ')},\n}`
-          const exportDefault = `export default { ${attrs.join(', ')} }`
+          const exportDefault = `export default { ${attrs.join(', ')} };`
 
           const nodeModuleCode = `
 ${requireTpl}
