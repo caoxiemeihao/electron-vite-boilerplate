@@ -1,7 +1,10 @@
+import path from 'path'
+import fs from 'fs'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import './samples/electron-store'
+// import './samples/electron-store'
+import electron, { ipcRenderer } from 'electron'
 import './index.css'
 
 ReactDOM.render(
@@ -19,6 +22,8 @@ ReactDOM.render(
 console.log('contextBridge ->', window.bridge)
 
 // Use ipcRenderer.on
-window.bridge.ipcRenderer.on('main-process-message', (_event, ...args) => {
+ipcRenderer.on('main-process-message', (_event, ...args) => {
   console.log('[Receive Main-process message]:', ...args)
 })
+
+console.log(electron, ipcRenderer, path, fs)

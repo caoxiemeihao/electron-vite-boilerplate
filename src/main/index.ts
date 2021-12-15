@@ -17,7 +17,9 @@ async function mainWin() {
   win = new BrowserWindow({
     title: 'Main window',
     webPreferences: {
-      preload: join(__dirname, '../preload/index.js')
+      preload: join(__dirname, '../preload/index.js'),
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   })
 
