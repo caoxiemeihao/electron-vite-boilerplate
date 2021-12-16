@@ -18,7 +18,14 @@ export interface Options {
 
 export function electron(options: Options): VitePlugin | VitePlugin[] {
   const cleanUrl = (url: string) => url.replace(/\?.*$/s, '').replace(/#.*$/s, '')
-  const isLoadElectron = (id: string) => cleanUrl(id).endsWith('electron/index.js')
+  const isLoadElectron = (id: string) => {
+    const cid = cleanUrl(id)
+    // pre-build: 'node_modules/.vite/electron.js'
+    // pnpm     : 'node_modules/.pnpm/electron@16.0.2/node_modules/electron/index.js'
+    // yarn     : 'node_modules/electron/index.js'
+    // npm      : 'node_modules/electron/index.js'
+    return cid.endsWith('electron/index.js') || cid.endsWith('.vite/electron.js')
+  }
 
   const electronResolve: VitePlugin = {
     name: 'vitejs-plugin-electron:electron-resolve',
