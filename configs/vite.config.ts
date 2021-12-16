@@ -18,11 +18,15 @@ export default defineConfig({
   ],
   base: './',
   build: {
+    assetsDir: '',
     emptyOutDir: true,
     minify: false,
     outDir: '../../dist/renderer',
     rollupOptions: {
       external: [...electron.externals],
+      output: {
+        format: 'cjs',
+      },
     },
   },
   css: {
