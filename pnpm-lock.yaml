@@ -20,6 +20,7 @@ specifiers:
   typescript: ^4.5.3
   vite: ^2.7.1
   vite-plugin-style-import: ^1.4.0
+  vitejs-plugin-electron: ^1.0.0
   webpack: ^5.65.0
   webpack-merge: ^5.8.0
 
@@ -45,6 +46,7 @@ devDependencies:
   typescript: 4.5.3
   vite: 2.7.1_less@4.1.2
   vite-plugin-style-import: 1.4.0_vite@2.7.1
+  vitejs-plugin-electron: 1.0.0
   webpack: 5.65.0
   webpack-merge: 5.8.0
 
@@ -6109,6 +6111,10 @@ packages:
       rollup: 2.61.1
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vitejs-plugin-electron/1.0.0:
+    resolution: {integrity: sha512-ZCJ2fDO+m7sJBBuBQVtJKkHSA0XtpNTddkxKy29IJpMBKaWJWh1FT/vd86Jov2I92Z6VbFZhwiN4gWm+Xty4tw==}
     dev: true
 
   /warning/4.0.3:
