@@ -20,7 +20,7 @@ specifiers:
   typescript: ^4.5.3
   vite: ^2.7.1
   vite-plugin-style-import: ^1.4.0
-  vitejs-plugin-electron: ^1.0.1
+  vitejs-plugin-electron: ^1.0.3
   webpack: ^5.65.0
   webpack-merge: ^5.8.0
 
@@ -46,7 +46,7 @@ devDependencies:
   typescript: 4.5.3
   vite: 2.7.1_less@4.1.2
   vite-plugin-style-import: 1.4.0_vite@2.7.1
-  vitejs-plugin-electron: 1.0.1
+  vitejs-plugin-electron: 1.0.3
   webpack: 5.65.0
   webpack-merge: 5.8.0
 
@@ -6113,8 +6113,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitejs-plugin-electron/1.0.1:
-    resolution: {integrity: sha512-P+toj7KErXiNehrzvHrSgFBC1pvFBoPz5+mSi35LTq88IY/WPL5WepB+Eh/PtESGCDZ9ukpPFJzT2TRcnR97uA==}
+  /vitejs-plugin-electron/1.0.3:
+    resolution: {integrity: sha512-RqDUAcoTRMQHizg2HXjL5+letFjvFDcztzhltaDHVwKl9KfSypVEYXto2BoGd/uI0LtEHA/4NQOs51XLqkd80g==}
     dev: true
 
   /warning/4.0.3:
