@@ -17,7 +17,7 @@
   # enter the project directory
   cd vite-webpack-electron
 
-  # install dependency(pnpm is required)
+  # install dependency(recommend use pnpm)
   pnpm install
 
   # develop
