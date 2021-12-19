@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@babel/core': ^7.16.0
   '@babel/preset-env': ^7.16.4
+  '@swc/core': ^1.2.120
   '@types/react': ^17.0.37
   '@types/react-dom': ^17.0.11
   '@vitejs/plugin-react': ^1.1.3
@@ -14,9 +15,11 @@ specifiers:
   electron-builder: ^22.14.5
   electron-store: ^8.0.1
   less: ^4.1.2
+  minimist: ^1.2.5
   react: ^17.0.2
   react-dom: ^17.0.2
   rimraf: ^3.0.2
+  swc-loader: ^0.1.15
   typescript: ^4.5.3
   vite: ^2.7.1
   vite-plugin-style-import: ^1.4.0
@@ -32,6 +35,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.16.0
   '@babel/preset-env': 7.16.4_@babel+core@7.16.0
+  '@swc/core': 1.2.120
   '@types/react': 17.0.37
   '@types/react-dom': 17.0.11
   '@vitejs/plugin-react': 1.1.3
@@ -42,12 +46,14 @@ devDependencies:
   electron-builder: 22.14.5
   electron-store: 8.0.1
   less: 4.1.2
+  minimist: 1.2.5
   rimraf: 3.0.2
+  swc-loader: 0.1.15_@swc+core@1.2.120+webpack@5.65.0
   typescript: 4.5.3
   vite: 2.7.1_less@4.1.2
   vite-plugin-style-import: 1.4.0_vite@2.7.1
   vitejs-plugin-electron: 1.1.0
-  webpack: 5.65.0
+  webpack: 5.65.0_@swc+core@1.2.120
   webpack-merge: 5.8.0
 
 packages:
@@ -2281,6 +2287,16 @@ packages:
       - supports-color
     dev: true
 
+  /@napi-rs/triples/1.1.0:
+    resolution: {integrity: sha512-XQr74QaLeMiqhStEhLn1im9EOMnkypp7MZOwQhGzqp2Weu5eQJbpPxWxixxlYRKWPOmJjsk6qYfYH9kq43yc2w==}
+    dev: true
+
+  /@node-rs/helper/1.2.1:
+    resolution: {integrity: sha512-R5wEmm8nbuQU0YGGmYVjEc0OHtYsuXdpRG+Ut/3wZ9XAvQWyThN08bTh2cBJgoZxHQUPtvRfeQuxcAgLuiBISg==}
+    dependencies:
+      '@napi-rs/triples': 1.1.0
+    dev: true
+
   /@rollup/pluginutils/4.1.1:
     resolution: {integrity: sha512-clDjivHqWGXi7u+0d2r2sBi4Ie6VLEAzWMIkvJLnDmxoOhBYOTfzGbOQBA32THHm11/LiJbd01tJUpJsbshSWQ==}
     engines: {node: '>= 8.0.0'}
@@ -2292,6 +2308,134 @@ packages:
   /@sindresorhus/is/0.14.0:
     resolution: {integrity: sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==}
     engines: {node: '>=6'}
+    dev: true
+
+  /@swc/core-android-arm64/1.2.120:
+    resolution: {integrity: sha512-WrXVXDAVpjPKhySuyC6mei4sW+gjv0m58kNOQ3D7hVfWGSKc3PtnQLHMwKEJKPJ4DKXEhe1twdUY60yzRcyMLg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [android]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-darwin-arm64/1.2.120:
+    resolution: {integrity: sha512-OqR+j4NmkwszLsqLGt4FMc4aXlLPxqtXGe7QdnJDM6i7btTi2MjqkF2CuEnwE+UX6DHw8M/z1uJliHU5kllvgw==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-darwin-x64/1.2.120:
+    resolution: {integrity: sha512-lX639zOJ0agdpdCrPiQk1bmEh3oAcbrEhNEgJROxU0mVhO6xkzPCdmy27LDSOzJS9GLrP/4cMewcaYRmv9VAbA==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-freebsd-x64/1.2.120:
+    resolution: {integrity: sha512-93VXbYmXYKuAwqKUTzNEYbnQbGF4fkDt+drfjk6+/EpCTrpw2mhZeKp1TxgKlQa4KLmXNg1A8XYrXOhG80tGbA==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-arm-gnueabihf/1.2.120:
+    resolution: {integrity: sha512-WXpjEtvj+VE7bnhyhGcs7X/d5wPHVhdyv4IsF64ycWSWaZo1LmKlXtWFH1SWczSDffisd3HCwGDhqGVZb9cZaA==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-arm64-gnu/1.2.120:
+    resolution: {integrity: sha512-iugMs6AuFxs9H0TnWy+kejF3UGvHF7TSropGeCOj6VooUkx4PQd4xVnn/DF8NNJy8ReI38FsHVj7brS1AsRNyg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-arm64-musl/1.2.120:
+    resolution: {integrity: sha512-HdD++mlst1C4APVPIxeCr3lKEaGPXJSsKHvrJ+NDp+E5SIEvcHJfekUgC62xG+y0WI6Ix36Sun83MnEEPwFN1A==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-x64-gnu/1.2.120:
+    resolution: {integrity: sha512-VYU2esPrdyfZTwwSUmHBIcmasa16+dyZMA1CZyW8m/4gppH3QvPreofVL+mu8+CG52ZRGs3g69runRN140ipSQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-x64-musl/1.2.120:
+    resolution: {integrity: sha512-hfBgSoAP4PGkHUqFDMi+iIvjyO4/GZg64ba+rECWW5ygAQ0cb+5QH+pWoOnixu0QDj2nbmziX/5v4OK4uRDpDw==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-win32-arm64-msvc/1.2.120:
+    resolution: {integrity: sha512-tYv0pGdDXBlyldqO5ywghzklQ/BVce/qZlXAwpEJrcLUWNRvLlv8czPCw/rhPPK7M67CuAmskAix7RRRQAoY2g==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-win32-ia32-msvc/1.2.120:
+    resolution: {integrity: sha512-zz9xhjp/fJEOFhG2pPhj2yEm5PE2XLUwGrVoi7+oHT6VHNaJAVmExRyKKYpzJIQt53k483jD8YvuAjWUvriy0A==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-win32-x64-msvc/1.2.120:
+    resolution: {integrity: sha512-GfuWWhxjoAoQGJrkaZgrrv/XQucg7M00dpIOsS0FT2eA4p5nrQ+aoaCS3hejWzgL9cNhKrpYRB6+lunK52yeNg==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core/1.2.120:
+    resolution: {integrity: sha512-9bSN4ZdDQsAiKEdNT0lv/8o0/70xkGFieq/I4cKdA9dQibAtfagzRyLPkCm54XKqd9NwvI9neAfYydbesyY/nw==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@node-rs/helper': 1.2.1
+    optionalDependencies:
+      '@swc/core-android-arm64': 1.2.120
+      '@swc/core-darwin-arm64': 1.2.120
+      '@swc/core-darwin-x64': 1.2.120
+      '@swc/core-freebsd-x64': 1.2.120
+      '@swc/core-linux-arm-gnueabihf': 1.2.120
+      '@swc/core-linux-arm64-gnu': 1.2.120
+      '@swc/core-linux-arm64-musl': 1.2.120
+      '@swc/core-linux-x64-gnu': 1.2.120
+      '@swc/core-linux-x64-musl': 1.2.120
+      '@swc/core-win32-arm64-msvc': 1.2.120
+      '@swc/core-win32-ia32-msvc': 1.2.120
+      '@swc/core-win32-x64-msvc': 1.2.120
     dev: true
 
   /@szmarczak/http-timer/1.1.2:
@@ -2786,7 +2930,7 @@ packages:
       loader-utils: 1.4.0
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.65.0
+      webpack: 5.65.0_@swc+core@1.2.120
     dev: true
 
   /babel-plugin-dynamic-import-node/2.3.3:
@@ -4454,6 +4598,15 @@ packages:
       json5: 1.0.1
     dev: true
 
+  /loader-utils/2.0.2:
+    resolution: {integrity: sha512-TM57VeHptv569d/GKh6TAYdzKblwDNiumOdkFnejjD0XwTH87K90w3O7AiJRqdQoXygvi1VQTJTLGhJl7WqA7A==}
+    engines: {node: '>=8.9.0'}
+    dependencies:
+      big.js: 5.2.2
+      emojis-list: 3.0.0
+      json5: 2.2.0
+    dev: true
+
   /locate-path/3.0.0:
     resolution: {integrity: sha512-7AO748wWnIhNqAuaty2ZWHkQHRSNfPVIsPIfwEOWO22AmaoVrWavlOcMR5nzTLNYvp36X220/maaRsrec1G65A==}
     engines: {node: '>=6'}
@@ -5860,6 +6013,17 @@ packages:
       has-flag: 4.0.0
     dev: true
 
+  /swc-loader/0.1.15_@swc+core@1.2.120+webpack@5.65.0:
+    resolution: {integrity: sha512-cn1WPIeQJvXM4bbo3OwdEIapsQ4uUGOfyFj0h2+2+brT0k76DCGnZXDE2KmcqTd2JSQ+b61z2NPMib7eEwMYYw==}
+    peerDependencies:
+      '@swc/core': ^1.2.52
+      webpack: '>=2'
+    dependencies:
+      '@swc/core': 1.2.120
+      loader-utils: 2.0.2
+      webpack: 5.65.0_@swc+core@1.2.120
+    dev: true
+
   /tapable/2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
@@ -5872,7 +6036,7 @@ packages:
       fs-extra: 10.0.0
     dev: true
 
-  /terser-webpack-plugin/5.2.5_acorn@8.6.0+webpack@5.65.0:
+  /terser-webpack-plugin/5.2.5_231092e3af20b567d23d53eab2b409e4:
     resolution: {integrity: sha512-3luOVHku5l0QBeYS8r4CdHYWEGMmIj3H1U64jgkdZzECcSOJAyJ9TjuqcQZvw1Y+4AOBN9SeYJPJmFn2cM4/2g==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -5888,12 +6052,13 @@ packages:
       uglify-js:
         optional: true
     dependencies:
+      '@swc/core': 1.2.120
       jest-worker: 27.4.4
       schema-utils: 3.1.1
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.10.0_acorn@8.6.0
-      webpack: 5.65.0
+      webpack: 5.65.0_@swc+core@1.2.120
     transitivePeerDependencies:
       - acorn
     dev: true
@@ -6165,7 +6330,7 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /webpack/5.65.0:
+  /webpack/5.65.0_@swc+core@1.2.120:
     resolution: {integrity: sha512-Q5or2o6EKs7+oKmJo7LaqZaMOlDWQse9Tm5l1WAfU/ujLGN5Pb0SqGeVkN/4bpPmEqEP5RnVhiqsOtWtUVwGRw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -6196,7 +6361,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.1.1
       tapable: 2.2.1
-      terser-webpack-plugin: 5.2.5_acorn@8.6.0+webpack@5.65.0
+      terser-webpack-plugin: 5.2.5_231092e3af20b567d23d53eab2b409e4
       watchpack: 2.3.1
       webpack-sources: 3.2.2
     transitivePeerDependencies:

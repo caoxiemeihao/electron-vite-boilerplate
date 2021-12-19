@@ -1,4 +1,11 @@
 const path = require('path');
+const argv = require('minimist')(process.argv.slice(2));
+
+/**
+ * @type {'swc' | 'babel'}
+ * @default swc
+ */
+const loader = argv.loader === 'babel' ? 'babel' : 'swc';
 
 /**
  * @type {(name: string) => import('webpack').Configuration}
@@ -16,12 +23,18 @@ module.exports = function (name) {
     },
     module: {
       rules: [
-        {
-          // '.tsx' for Preload-script.
-          test: /\.(ts|tsx)$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader',
-        },
+        loader === 'babel'
+          ? {
+            // '.tsx' for Preload-script.
+            test: /\.(ts|tsx)$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+          }
+          : {
+            test: /\.(ts|tsx)$/,
+            exclude: /node_modules/,
+            loader: 'swc-loader',
+          },
       ],
     },
     resolve: {
