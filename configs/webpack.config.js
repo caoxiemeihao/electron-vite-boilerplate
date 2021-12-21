@@ -1,11 +1,7 @@
 const path = require('path');
-const argv = require('minimist')(process.argv.slice(2));
+const { getLoader } = require('../scripts/utils');
 
-/**
- * @type {'swc' | 'babel'}
- * @default swc
- */
-const loader = argv.loader === 'babel' ? 'babel' : 'swc';
+const { loader } = getLoader();
 
 /**
  * @type {(name: string) => import('webpack').Configuration}

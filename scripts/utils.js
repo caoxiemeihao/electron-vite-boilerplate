@@ -1,7 +1,8 @@
 const chalk = require('chalk');
+const argv = require('minimist')(process.argv.slice(2));
 
 /**
- * @type {import('./utils').CallbackFunction}
+ * @type {(tag: string, cb?: (bool: boolean) => void) => Parameters<import('webpack').Compiler['run']>[0]}
  */
 exports.callbackFunction = function (tag, cb = (bool) => { }) {
   const now = new Date().toLocaleString();
@@ -21,3 +22,19 @@ exports.callbackFunction = function (tag, cb = (bool) => { }) {
     }
   }
 };
+
+/**
+ * @type {(tag: string) => { loader: 'swc' | 'babel', TAG: string }}
+ */
+exports.getLoader = function () {
+  const loader = argv.loader === 'babel' ? 'babel' : 'swc';
+  const dict = {
+    swc: chalk.hex('#dea584')('swc-loader'),
+    babel: chalk.hex('#f5da55')('babel-loader'),
+  };
+
+  return {
+    loader,
+    TAG: dict[loader],
+  };
+}

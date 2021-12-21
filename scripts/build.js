@@ -3,9 +3,10 @@ process.env.NODE_ENV = 'production';
 const path = require('path');
 const webpack = require('webpack');
 const { build: viteBuildFn } = require('vite');
-const utils = require('./utils');
+const { callbackFunction, getLoader } = require('./utils');
 
 const TAG = '[build.js]';
+const { TAG: loaderTAG } = getLoader();
 
 // build for Main-process and Preload-script
 async function webpackBuild() {
@@ -17,7 +18,7 @@ async function webpackBuild() {
   for (const [name, config] of Object.entries(configs)) {
     const bool = await new Promise(resolve => {
       const compiler = webpack(require(`../configs/${config}`))
-      compiler.run(utils.callbackFunction(`${TAG} ${name}:`, bool => {
+      compiler.run(callbackFunction(`${TAG} ${name}:`, bool => {
         resolve(bool);
       }))
     });
@@ -35,6 +36,8 @@ async function viteBuild() {
 
 // bootstrap
 (async () => {
+  console.log(TAG, 'transpile .ts use', loaderTAG);
+
   await webpackBuild();
   await viteBuild();
 })();
