@@ -1,5 +1,5 @@
 {
-  "name": "vite-webpack-electron",
+  "name": "electron-vite-boilerplate",
   "version": "0.0.1",
   "main": "dist/main/index.js",
   "author": "草鞋没号 <308487730@qq.com>",
@@ -10,40 +10,6 @@
   "scripts": {
     "dev": "node scripts/dev.js --loader=swc",
     "build": "rimraf dist && node scripts/build.js --loader=babel && electron-builder"
-  },
-  "build": {
-    "appId": "308487730@qq.com",
-    "asar": false,
-    "directories": {
-      "output": "release/${version}"
-    },
-    "files": [
-      "!node_modules",
-      "dist/**"
-    ],
-    "mac": {
-      "artifactName": "${productName}_${version}.${ext}",
-      "target": [
-        "dmg"
-      ]
-    },
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
-      "artifactName": "${productName}_${version}.${ext}"
-    },
-    "nsis": {
-      "oneClick": false,
-      "perMachine": false,
-      "allowToChangeInstallationDirectory": true,
-      "deleteAppDataOnUninstall": false
-    }
   },
   "dependencies": {
     "antd": "^4.17.3",
