@@ -1,6 +1,6 @@
-# vite-webpack-electron
+# electron-vite-boilerplate
 
-![GitHub license](https://img.shields.io/github/license/caoxiemeihao/vite-webpack-electron)
+![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-boilerplate)
 
 ## Feature
 
@@ -12,10 +12,10 @@
 
   ```bash
   # clone the project
-  git clone git@github.com:caoxiemeihao/vite-webpack-electron.git
+  git clone git@github.com:caoxiemeihao/electron-vite-boilerplate.git
 
   # enter the project directory
-  cd vite-webpack-electron
+  cd electron-vite-boilerplate
 
   # install dependency(recommend use pnpm)
   pnpm install
