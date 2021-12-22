@@ -6,7 +6,7 @@
 
 - Enabled `Electron` and `NodeJs` in `Renderer-process` by **[vitejs-plugin-electron](https://www.npmjs.com/package/vitejs-plugin-electron)**.
 - Use `Vite` build `Renderer-process`.
-- Use `Webpack` build `Main-process` and `Preload-script`.
+- Use `esbuild` build `Main-process` and `Preload-script`.
 
 ## Run Setup
 
