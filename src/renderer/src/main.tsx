@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import App from './App'
 // import './samples/electron-store'
 import electron, { ipcRenderer } from 'electron'
+import 'antd/dist/antd.css'
 import './index.css'
 
 ReactDOM.render(
