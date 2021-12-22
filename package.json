@@ -8,8 +8,8 @@
     "node": ">=14.17.0"
   },
   "scripts": {
-    "dev": "node scripts/dev.js --loader=swc",
-    "build": "rimraf dist && node scripts/build.js --loader=babel && electron-builder"
+    "dev": "node scripts/watch.js",
+    "build": "node scripts/build.js && electron-builder"
   },
   "dependencies": {
     "antd": "^4.17.3",
@@ -29,13 +29,11 @@
     "electron": "16.0.2",
     "electron-builder": "^22.14.5",
     "electron-store": "^8.0.1",
-    "less": "^4.1.2",
+    "esbuild": "^0.14.7",
     "minimist": "^1.2.5",
-    "rimraf": "^3.0.2",
     "swc-loader": "^0.1.15",
     "typescript": "^4.5.3",
     "vite": "^2.7.1",
-    "vite-plugin-style-import": "^1.4.0",
     "vitejs-plugin-electron": "^1.1.0",
     "webpack": "^5.65.0",
     "webpack-merge": "^5.8.0"
