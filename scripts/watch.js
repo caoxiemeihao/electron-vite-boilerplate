@@ -34,7 +34,7 @@ function watchPreload(server) {
 // bootstrap
 (async () => {
   const server = await vite.createServer({ configFile: 'src/renderer/vite.config.ts' })
-  server.listen(pkg.env.PORT);
+  await server.listen(pkg.env.PORT);
   watchPreload(server);
   watchMain();
 })();
