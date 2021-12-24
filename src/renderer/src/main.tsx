@@ -30,7 +30,3 @@ console.log('fs', fs)
 ipcRenderer.on('main-process-message', (_event, ...args) => {
   console.log('[Receive Main-process message]:', ...args)
 })
-
-// Use electron-store
-// const store = new Store()
-// console.log('electron-store:path', store.path)
