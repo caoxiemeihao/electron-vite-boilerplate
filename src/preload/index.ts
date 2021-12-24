@@ -4,12 +4,10 @@ import { useLoading } from './loading'
 const isDev = process.env.NODE_ENV === 'development'
 const { appendLoading, removeLoading } = useLoading()
 
-window.bridge = Object.assign(window.bridge || {}, {
-  removeLoading,
-})
+window.removeLoading = removeLoading;
 
-; (async () => {
+(async () => {
   await domReady()
 
   appendLoading()
-})();
+})()
