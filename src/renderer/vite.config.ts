@@ -9,7 +9,14 @@ export default defineConfig({
   mode: process.env.NODE_ENV,
   plugins: [
     react(),
-    electron(),
+    electron({
+      external: {
+        'electron-store': `
+        const Store = require('electron-store');
+        export { Store as default }
+        `
+      },
+    }) as any,
   ],
   base: './',
   build: {
@@ -25,7 +32,11 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['electron'],
+    exclude: [
+      // Accelerate build.
+      'electron',
+      'electron-store',
+    ],
   },
   server: {
     host: pkg.env.HOST,
