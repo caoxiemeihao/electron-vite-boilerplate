@@ -45,3 +45,9 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 ├   ├── renderer      Renderer-process source code
 ├
 ```
+
+## Branch
+
+#### [webpack](https://github.com/caoxiemeihao/electron-vite-boilerplate/tree/webpack)
+
+  - [x] supported `sqlite3`
