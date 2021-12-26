@@ -14,7 +14,11 @@ function optionsFactory(options, watchCb) {
   const opts = {
     // https://www.electronjs.org/blog/electron-16-0
     target: 'node16.9.1',
-    external: ['electron', ...builtinModules],
+    external: [
+      'electron',
+      ...builtinModules,
+      'sqlite3',
+    ],
     format: 'cjs',
     bundle: true,
   };
