@@ -10,11 +10,8 @@ export default defineConfig({
   plugins: [
     react(),
     electron({
-      external: {
-        'electron-store': `
-        const Store = require('electron-store');
-        export { Store as default }
-        `
+      resolve: {
+        'electron-store': `const Store = require('electron-store');\nexport { Store as default }`,
       },
     }) as any,
   ],

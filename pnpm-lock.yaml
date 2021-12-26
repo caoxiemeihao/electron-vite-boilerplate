@@ -16,7 +16,7 @@ specifiers:
   rimraf: ^3.0.2
   typescript: ^4.5.3
   vite: ^2.7.1
-  vitejs-plugin-electron: ^1.1.2
+  vitejs-plugin-electron: ^1.2.0
 
 dependencies:
   antd: 4.17.3_react-dom@17.0.2+react@17.0.2
@@ -36,7 +36,7 @@ devDependencies:
   rimraf: 3.0.2
   typescript: 4.5.3
   vite: 2.7.1
-  vitejs-plugin-electron: 1.1.2
+  vitejs-plugin-electron: 1.2.0
 
 packages:
 
@@ -3474,8 +3474,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitejs-plugin-electron/1.1.2:
-    resolution: {integrity: sha512-AnSdTKeYRkUQMl4cOcGK8y7ed3DaZnnyOduWd0ga/U5vBmQLbsNV8OPtD69watlPa9OL76Z2r6hd6gO7hXCkYA==}
+  /vitejs-plugin-electron/1.2.0:
+    resolution: {integrity: sha512-/MU0fRGaiQDHSiMGdMJ9bnoidltI5i6w0tCR5Bhw4aGLzVRIzFNzyyBv5nz7oznPsG8WM944GGG6z6p+ffp4Rg==}
     dev: true
 
   /warning/4.0.3:
