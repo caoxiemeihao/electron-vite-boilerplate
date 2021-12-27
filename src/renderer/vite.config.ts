@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import vue from '@vitejs/plugin-vue'
 import electron from 'vitejs-plugin-electron'
 import pkg from '../../package.json'
 
@@ -8,7 +8,7 @@ export default defineConfig({
   root: __dirname,
   mode: process.env.NODE_ENV,
   plugins: [
-    react(),
+    vue(),
     electron({
       resolve: {
         'electron-store': `const Store = require('electron-store');\nexport { Store as default }`,
