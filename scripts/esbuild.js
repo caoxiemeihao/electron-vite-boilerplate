@@ -15,8 +15,8 @@ function optionsFactory(options, watchCb) {
     // https://www.electronjs.org/blog/electron-16-0
     target: 'node16.9.1',
     external: [
-      'electron',
       ...builtinModules,
+      'electron',
       'sqlite3',
     ],
     format: 'cjs',
