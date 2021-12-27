@@ -1,12 +1,19 @@
 # electron-vite-boilerplate
 
-![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-boilerplate)
+![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-boilerplate?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-boilerplate?color=fa6470&style=flat)
 
 ## Overview
 
 - Enabled `Electron` and `NodeJs` in `Renderer-process` by **[vitejs-plugin-electron](https://www.npmjs.com/package/vitejs-plugin-electron)**.
 - Use `Vite` build `Renderer-process`.
 - Use `esbuild` build `Main-process` and `Preload-script`.
+
+## Feature
+
+- [x] `Vue3`
+- [x] `electron-store`
+- [x] `sqlite3`
 
 ## Run Setup
 
@@ -54,6 +61,8 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 
 #### [webpack](https://github.com/caoxiemeihao/electron-vite-boilerplate/tree/webpack)
 
-  - [x] React + Antd + Less
-  - [x] Support `swc-loader`
-  - [x] Support `babel-lader`
+- [x] `React` + `Antd` + `Less`
+- [x] Support `swc-loader`
+- [x] Support `babel-lader`
+- [x] Integrate `electron-store`
+- [x] Integrate `sqlite3`
