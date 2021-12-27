@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "node scripts/watch.js",
-    "build": "rimraf dist && node scripts/build.js && electron-builder"
+    "build": "rimraf dist && vue-tsc --noEmit && node scripts/build.js && electron-builder"
   },
   "dependencies": {
     "sqlite3": "^5.0.2"
@@ -27,7 +27,8 @@
     "typescript": "^4.5.3",
     "vite": "^2.7.1",
     "vitejs-plugin-electron": "^1.2.0",
-    "vue": "^3.2.26"
+    "vue": "^3.2.26",
+    "vue-tsc": "^0.30.1"
   },
   "env": {
     "//": "Used in build scripts",
