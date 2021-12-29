@@ -36,7 +36,7 @@
 Once `dev` or `build` npm-script executed will be generate named `dist` folder. It has children dir of same as `src` folder, the purpose of this design can ensure the correct path calculation.
 
 ```tree
-├── dist              'src' build generation
+├── dist              Tt's generated according to the "src" directory
 ├   ├── main
 ├   ├── preload
 ├   ├── renderer
