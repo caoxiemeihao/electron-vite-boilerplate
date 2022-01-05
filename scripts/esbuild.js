@@ -1,4 +1,5 @@
 const { builtinModules } = require('module');
+const pkg = require('../package.json');
 
 /**
  * @typedef {import('esbuild').BuildOptions} BuildOptions
@@ -15,9 +16,9 @@ function optionsFactory(options, watchCb) {
     // https://www.electronjs.org/blog/electron-16-0
     target: 'node16.9.1',
     external: [
-      ...builtinModules,
       'electron',
-      'sqlite3',
+      ...builtinModules,
+      ...Object.keys(pkg.dependencies || {}),
     ],
     format: 'cjs',
     bundle: true,
