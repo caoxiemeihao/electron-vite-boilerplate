@@ -22,7 +22,10 @@ export default defineConfig({
     minify: false,
     outDir: '../../dist/renderer',
     rollupOptions: {
-      external: [...electron.externals],
+      external: [
+        ...electron.externals,
+        ...Object.keys(pkg.dependencies || {}),
+      ],
       output: {
         format: 'cjs',
       },
