@@ -1,6 +1,6 @@
-const esbuild = require('esbuild');
-const vite = require('vite');
-const { mainOptions, preloadOptions } = require('./esbuild');
+import esbuild from 'esbuild';
+import vite from 'vite';
+import { mainOptions, preloadOptions } from './esbuild.mjs';
 
 const TAG = '[build.js]';
 

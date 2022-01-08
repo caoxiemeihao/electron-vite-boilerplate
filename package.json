@@ -8,8 +8,8 @@
     "node": ">=14.17.0"
   },
   "scripts": {
-    "dev": "node scripts/watch.js",
-    "build": "rimraf dist && vue-tsc --noEmit && node scripts/build.js && electron-builder"
+    "dev": "node scripts/watch.mjs",
+    "build": "rimraf dist && vue-tsc --noEmit && node scripts/build.mjs && electron-builder"
   },
   "dependencies": {
     "sqlite3": "^5.0.2"

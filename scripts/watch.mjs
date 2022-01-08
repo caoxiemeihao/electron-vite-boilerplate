@@ -1,9 +1,10 @@
-const electron = require('electron');
-const cp = require('child_process');
-const esbuild = require('esbuild');
-const vite = require('vite');
-const { mainOptions, preloadOptions } = require('./esbuild');
-const pkg = require('../package.json');
+import electron from 'electron';
+import cp from 'child_process';
+import { createRequire } from 'module';
+import esbuild from 'esbuild';
+import vite from 'vite';
+import { mainOptions, preloadOptions } from './esbuild.mjs';
+const pkg = createRequire(import.meta.url)('../package.json');
 
 function watchMain() {
   /**
@@ -13,7 +14,7 @@ function watchMain() {
   const startElectron = () => {
     electronProcess && electronProcess.kill();
     electronProcess = cp.spawn(electron, ['.'], {
-      env: Object.assign(process.env, pkg.env),
+    env: Object.assign(process.env, pkg.env),
       stdio: 'inherit',
     });
   };

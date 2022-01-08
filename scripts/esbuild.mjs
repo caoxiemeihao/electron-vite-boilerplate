@@ -1,5 +1,5 @@
-const { builtinModules } = require('module');
-const pkg = require('../package.json');
+import { builtinModules, createRequire } from 'module';
+const pkg = createRequire(import.meta.url)('../package.json');
 
 /**
  * @typedef {import('esbuild').BuildOptions} BuildOptions
@@ -44,7 +44,7 @@ function optionsFactory(options, watchCb) {
 /**
  * @type {(watchCb?: () => void) => BuildOptions}
  */
-exports.mainOptions = function (watchCb) {
+export function mainOptions(watchCb) {
   return optionsFactory({
     entryPoints: ['src/main/index.ts'],
     outdir: 'dist/main',
@@ -54,7 +54,7 @@ exports.mainOptions = function (watchCb) {
 /**
  * @type {(watchCb?: () => void) => BuildOptions}
  */
-exports.preloadOptions = function (watchCb) {
+export function preloadOptions(watchCb) {
   return optionsFactory({
     entryPoints: ['src/preload/index.ts'],
     outdir: 'dist/preload',
