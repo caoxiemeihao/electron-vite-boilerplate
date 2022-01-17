@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "electron-store": "^8.0.1",
+    "serialport": "^10.0.2",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
+    "@types/serialport": "^8.0.2",
     "@types/sqlite3": "^3.1.8",
     "@vitejs/plugin-vue": "^2.0.1",
     "chalk": "^5.0.0",
