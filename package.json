@@ -33,10 +33,5 @@
     "//": "Used in build scripts",
     "HOST": "127.0.0.1",
     "PORT": 5555
-  },
-  "keywords": [
-    "vite",
-    "electron",
-    "esbuild"
-  ]
+  }
 }
