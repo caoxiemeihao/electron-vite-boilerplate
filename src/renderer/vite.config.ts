@@ -12,6 +12,7 @@ export default defineConfig({
     electron({
       resolve: {
         'electron-store': `const Store = require('electron-store');\nexport { Store as default }`,
+        'serialport': 'export default require("serialport");',
       },
     }) as any,
   ],
