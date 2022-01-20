@@ -12,6 +12,7 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "strict": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipDefaultLibCheck": true
   }
 }
