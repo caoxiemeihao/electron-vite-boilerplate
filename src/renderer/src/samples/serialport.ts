@@ -7,8 +7,8 @@ import serialport from 'serialport'
 
 async function listSerialPorts() {
   try {
-    const ports = await serialport.list();
-    console.log('ports', ports);
+    const ports = await serialport.list()
+    console.log('ports', ports)
 
     if (ports.length === 0) {
       console.log('No ports discovered')
@@ -21,6 +21,6 @@ async function listSerialPorts() {
 // Set a timeout that will check for new serialPorts every 2 seconds.
 // This timeout reschedules itself.
 setTimeout(function listPorts() {
-  listSerialPorts();
+  listSerialPorts()
   setTimeout(listPorts, 2000)
 }, 2000)
