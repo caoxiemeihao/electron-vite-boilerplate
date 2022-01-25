@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import electron from 'vitejs-plugin-electron'
+import electronRenderer from 'vite-plugin-electron-renderer'
 import pkg from '../../package.json'
 
 // https://vitejs.dev/config/
@@ -9,35 +9,16 @@ export default defineConfig({
   mode: process.env.NODE_ENV,
   plugins: [
     vue(),
-    electron({
+    electronRenderer({
       resolve: {
-        'electron-store': `const Store = require('electron-store');\nexport { Store as default }`,
-        'serialport': 'export default require("serialport");',
+        'electron-store': 'export default require("electron-store");',
+        serialport: 'export default require("serialport");',
       },
-    }) as any,
+    }),
   ],
-  base: './',
   build: {
-    assetsDir: '',
     emptyOutDir: true,
-    minify: false,
     outDir: '../../dist/renderer',
-    rollupOptions: {
-      external: [
-        ...electron.externals,
-        ...Object.keys(pkg.dependencies || {}),
-      ],
-      output: {
-        format: 'cjs',
-      },
-    },
-  },
-  optimizeDeps: {
-    exclude: [
-      // Accelerate build.
-      'electron',
-      'electron-store',
-    ],
   },
   server: {
     host: pkg.env.HOST,
