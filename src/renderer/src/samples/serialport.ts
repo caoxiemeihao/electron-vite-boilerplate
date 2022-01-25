@@ -6,22 +6,21 @@ import serialport from 'serialport'
 // All of the Node.js APIs are available in this process.
 
 async function listSerialPorts() {
-  await serialport.list().then((ports, err) => {
-    if (err) {
-      console.warn(err.message)
-      return
-    }
+  try {
+    const ports = await serialport.list();
     console.log('ports', ports);
 
     if (ports.length === 0) {
       console.log('No ports discovered')
     }
-  })
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 // Set a timeout that will check for new serialPorts every 2 seconds.
 // This timeout reschedules itself.
 setTimeout(function listPorts() {
   listSerialPorts();
-  setTimeout(listPorts, 2000);
-}, 2000);
+  setTimeout(listPorts, 2000)
+}, 2000)
