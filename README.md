@@ -51,20 +51,21 @@ ipcRenderer.on(/* something */)
 Once `dev` or `build` npm-script executed will be generate named `dist` folder. It has children dir of same as `src` folder, the purpose of this design can ensure the correct path calculation.
 
 ```tree
-├── dist              Tt's generated according to the "src" directory
+├── dist                      Tt's generated according to the "src" directory
 ├   ├── main
 ├   ├── preload
 ├   ├── renderer
 ├
 ├── scripts
-├   ├── build.js      Build script, for -> npm run build
-├   ├── esbuild.js
-├   ├── watch.js      Develop script, for -> npm run dev
+├   ├── build.mjs             Build script, for -> npm run build
+├   ├── vite.config.mjs       Marin-process, Preload-script vite-config
+├   ├── watch.mjs             Develop script, for -> npm run dev
 ├
 ├── src
-├   ├── main          Main-process source code
-├   ├── preload       Preload-script source code
-├   ├── renderer      Renderer-process source code
+├   ├── main                  Main-process source code
+├   ├── preload               Preload-script source code
+├   ├── renderer              Renderer-process source code
+├       ├── vite.config.ts    Renderer-process vite-config
 ├
 ```
 
