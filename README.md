@@ -9,9 +9,10 @@
 
 ## Feature
 
+- [x] [SQLite3](https://www.npmjs.com/package/sqlite3)
+- [x] [SerialPort](https://www.npmjs.com/package/serialport)
+- [x] [electron-store](https://www.npmjs.com/package/electron-store)
 - [x] `Vue3`
-- [x] `electron-store`
-- [x] `sqlite3`
 
 ## Run Setup
 
