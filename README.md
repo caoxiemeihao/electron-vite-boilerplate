@@ -5,7 +5,7 @@
 
 ## Overview
 
-:electron: Enabled `Electron` and `NodeJs` in `Renderer-process` by **[vitejs-plugin-electron](https://www.npmjs.com/package/vitejs-plugin-electron)**.
+:electron: Enabled `Electron` and `NodeJs` in `Renderer-process` by **[vite-plugin-electron-renderer](https://www.npmjs.com/package/vite-plugin-electron-renderer)**.
 
 ## Feature
 
