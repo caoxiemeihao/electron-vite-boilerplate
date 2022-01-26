@@ -130,3 +130,7 @@ export default {
 - [x] Support `babel-lader`
 - [x] Integrate `electron-store`
 - [x] Integrate `sqlite3`
+
+## Wechat
+
+<img width="244px" src="https://raw.githubusercontent.com/caoxiemeihao/blog/main/assets/wechat/group/qrcode.jpg" />
