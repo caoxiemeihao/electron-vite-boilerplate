@@ -69,7 +69,7 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 ├
 ```
 
-## 🚧 Use SerialPort, SQLite3 or other node-native addons
+## 🚧 Use SerialPort, SQLite3 or other node-native addons in Renderer-process
 
 1. First, yout need to make sure the deps in "dependencies". Because the project still needs it after packaged.
 
@@ -110,6 +110,33 @@ export default {
       },
     }),
   ],
+}
+```
+
+## Use SerialPort, SQLite3 or other node-native addons in Main-process
+
+Main-process, Preload-script are also built with Vite, and they are just built as [build.lib](https://vitejs.dev/config/#build-lib).  
+So they just need to configure Rollup.  
+
+**Click to view more** 👉 [scripts/vite.config.mjs](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/scripts/vite.config.mjs)
+
+```js
+export default {
+  build: {
+    // built lib for Main-process, Preload-script
+    lib: {
+      entry: 'index.ts',
+      formats: ['cjs'],
+      fileName: () => '[name].js',
+    },
+    rollupOptions: {
+      // configuration here
+      external: [
+        'serialport',
+        'sqlite3',
+      ],
+    },
+  },
 }
 ```
 
