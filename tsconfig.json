@@ -1,7 +1,7 @@
 {
   "extends": "./paths.json",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
     "importHelpers": true,
