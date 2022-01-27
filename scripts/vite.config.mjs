@@ -1,22 +1,21 @@
-import path from 'path';
-import { builtinModules, createRequire } from 'module';
-import { fileURLToPath } from 'url';
-import { defineConfig } from 'vite';
+import { builtinModules, createRequire } from 'module'
+import { defineConfig } from 'vite'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const pkg = createRequire(import.meta.url)('../package.json');
+const require = createRequire(import.meta.url)
+const pkg = require('../package.json')
 
-export const main = defineConfig({
-  root: path.join(__dirname, '../src/main'),
+export default defineConfig({
+  mode: process.env.NODE_ENV,
+  // root: [path],
   build: {
+    // outDir: [path],
     lib: {
       entry: 'index.ts',
       formats: ['cjs'],
       fileName: () => '[name].js',
     },
-    minify: false,
+    minify: process.env.NODE_ENV === 'production',
     emptyOutDir: true,
-    outDir: '../../dist/main',
     rollupOptions: {
       external: [
         'electron',
@@ -25,25 +24,4 @@ export const main = defineConfig({
       ],
     },
   },
-});
-
-export const preload = defineConfig({
-  root: path.join(__dirname, '../src/preload'),
-  build: {
-    lib: {
-      entry: 'index.ts',
-      formats: ['cjs'],
-      fileName: () => '[name].js',
-    },
-    minify: false,
-    emptyOutDir: true,
-    outDir: '../../dist/preload',
-    rollupOptions: {
-      external: [
-        'electron',
-        ...builtinModules,
-        ...Object.keys(pkg.dependencies || {}),
-      ],
-    },
-  },
-});
+})
