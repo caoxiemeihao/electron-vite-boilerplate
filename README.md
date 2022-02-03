@@ -34,7 +34,7 @@ ipcRenderer.on(/* something */)
 
   ```bash
   # clone the project
-  git clone git@github.com:caoxiemeihao/electron-vite-boilerplate.git
+  git clone https://github.com/caoxiemeihao/electron-vite-boilerplate.git
 
   # enter the project directory
   cd electron-vite-boilerplate
