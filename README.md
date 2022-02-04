@@ -95,7 +95,7 @@ import sqlite3 from 'sqlite3'
 
 This way is actually just a syntax-sugar of CommonJS syntax. At the same time, [vite-plugin-electron-renderer](https://www.npmjs.com/package/vite-plugin-electron-renderer) needs to be configured.
 
-**Click to view more** 👉 [src/renderer/vite.config.ts](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/src/renderer/vite.config.ts)
+**Click to see more** 👉 [src/renderer/vite.config.ts](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/src/renderer/vite.config.ts)
 
 ```js
 import electronRenderer from 'vite-plugin-electron-renderer'
@@ -118,7 +118,7 @@ export default {
 Main-process, Preload-script are also built with Vite, and they are just built as [build.lib](https://vitejs.dev/config/#build-lib).  
 So they just need to configure Rollup.  
 
-**Click to view more** 👉 [scripts/vite.config.mjs](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/scripts/vite.config.mjs)
+**Click to see more** 👉 [scripts/vite.config.mjs](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/scripts/vite.config.mjs)
 
 ```js
 export default {
