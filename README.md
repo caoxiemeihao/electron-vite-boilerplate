@@ -1,7 +1,7 @@
 # electron-vite-boilerplate
 
-![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-boilerplate?style=flat)
-![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-boilerplate?color=fa6470&style=flat)
+[![Required Node.JS >= v14.17.0](https://img.shields.io/static/v1?label=node&message=%3E=14.17.0&logo=node.js&color=3f893e&style=flat)](https://nodejs.org/about/releases)
+[![awesome-vite](https://camo.githubusercontent.com/abb97269de2982c379cbc128bba93ba724d8822bfbe082737772bd4feb59cb54/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667)](https://github.com/vitejs/awesome-vite)
 
 ## Overview
 
@@ -28,7 +28,6 @@ ipcRenderer.on(/* something */)
 - [x] [SQLite3](https://www.npmjs.com/package/sqlite3)
 - [x] [SerialPort](https://www.npmjs.com/package/serialport)
 - [x] [electron-store](https://www.npmjs.com/package/electron-store)
-- [x] `Vue3`
 
 ## Run Setup
 
@@ -51,21 +50,23 @@ ipcRenderer.on(/* something */)
 Once `dev` or `build` npm-script executed will be generate named `dist` folder. It has children dir of same as `src` folder, the purpose of this design can ensure the correct path calculation.
 
 ```tree
-├── dist                      Tt's generated according to the "src" directory
+├
+├── dist                      After build, it's generated according to the "packages" directory
 ├   ├── main
 ├   ├── preload
 ├   ├── renderer
 ├
 ├── scripts
-├   ├── build.mjs             Build script, for -> npm run build
-├   ├── vite.config.mjs       Marin-process, Preload-script vite-config
-├   ├── watch.mjs             Develop script, for -> npm run dev
+├   ├── build.mjs             Develop script -> npm run build
+├   ├── watch.mjs             Develop script -> npm run dev
 ├
-├── src
+├── packages
 ├   ├── main                  Main-process source code
+├       ├── vite.config.ts
 ├   ├── preload               Preload-script source code
+├       ├── vite.config.ts
 ├   ├── renderer              Renderer-process source code
-├       ├── vite.config.ts    Renderer-process vite-config
+├       ├── vite.config.ts
 ├
 ```
 
@@ -95,7 +96,7 @@ import sqlite3 from 'sqlite3'
 
 This way is actually just a syntax-sugar of CommonJS syntax. At the same time, [vite-plugin-electron-renderer](https://www.npmjs.com/package/vite-plugin-electron-renderer) needs to be configured.
 
-**Click to see more** 👉 [src/renderer/vite.config.ts](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/src/renderer/vite.config.ts)
+**Click to see more** 👉 [packages/renderer/vite.config.ts](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/packages/renderer/vite.config.ts)
 
 ```js
 import electronRenderer from 'vite-plugin-electron-renderer'
@@ -118,7 +119,7 @@ export default {
 Main-process, Preload-script are also built with Vite, and they are just built as [build.lib](https://vitejs.dev/config/#build-lib).  
 So they just need to configure Rollup.  
 
-**Click to see more** 👉 [scripts/vite.config.mjs](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/scripts/vite.config.mjs)
+**Click to see more** 👉 [packages/main/vite.config.ts](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/packages/main/vite.config.ts)
 
 ```js
 export default {

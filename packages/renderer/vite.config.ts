@@ -1,3 +1,4 @@
+import { join } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import electronRenderer from 'vite-plugin-electron-renderer'
@@ -21,7 +22,11 @@ export default defineConfig({
     outDir: '../../dist/renderer',
   },
   server: {
-    host: pkg.env.HOST,
     port: pkg.env.PORT,
+  },
+  resolve: {
+    alias: {
+      '@': join(__dirname, 'src'),
+    },
   },
 });
