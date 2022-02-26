@@ -41,7 +41,7 @@ export default function () {
 
   return `
   <style>
-    .serialport-box table { margin: auto; }
+    .serialport-box table { width:770px; margin:auto; }
   </style>
   <div class="serialport-box">
     <h2>Serialport</h2>

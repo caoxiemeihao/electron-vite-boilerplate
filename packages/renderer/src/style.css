@@ -5,7 +5,7 @@ body {
   padding-top: .1px;
 }
 
-body, div, span, img {
+body, div, span, img, code {
   box-sizing: border-box;
 }
 
@@ -15,7 +15,7 @@ body, div, span, img {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .logo-box {
