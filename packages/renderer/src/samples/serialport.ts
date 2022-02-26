@@ -29,13 +29,13 @@ export default function () {
     if (ports.length && oDiv) {
       const keys = Object.keys(ports[0]);
       oDiv.innerHTML = `
-<table border="1">
-  <thead>
-    ${keys.map(key => `<th>${key}</th>`).join('')}
-  <thead>
-  ${ports.map(info => `<tr>${keys.map(key => `<td>${info[key as keyof serialport.PortInfo] || ''}</td>`).join('')}</tr>`).join('')}
-</table>
-`;
+      <table border="1">
+        <thead>
+          ${keys.map(key => `<th>${key}</th>`).join('')}
+        <thead>
+        ${ports.map(info => `<tr>${keys.map(key => `<td>${info[key as keyof serialport.PortInfo] || ''}</td>`).join('')}</tr>`).join('')}
+      </table>
+      `;
     }
   }, 400)
 
