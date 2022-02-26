@@ -1,6 +1,6 @@
 import './samples/nodejs-api'
 import './samples/electron-store'
-import './samples/serialport'
+import renderSerialport from './samples/serialport'
 import electron from './assets/electron.png'
 import vite from './assets/vite.svg'
 import ts from './assets/ts.svg'
@@ -23,5 +23,6 @@ function renderHTML() {
     Place static files into the <code>src/renderer/public</code> folder
     <img src="/images/node.png" />
   </div>
+  ${renderSerialport()}
 `
 }
