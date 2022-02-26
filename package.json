@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "node scripts/watch.mjs",
-    "build": "vue-tsc --noEmit && node scripts/build.mjs && electron-builder"
+    "build": "node scripts/build.mjs && electron-builder"
   },
   "dependencies": {
     "electron-store": "^8.0.1",
@@ -19,14 +19,11 @@
   "devDependencies": {
     "@types/serialport": "^8.0.2",
     "@types/sqlite3": "^3.1.8",
-    "@vitejs/plugin-vue": "^2.0.1",
     "electron": "16.0.2",
     "electron-builder": "^22.14.5",
     "typescript": "^4.5.4",
     "vite": "^2.7.12",
-    "vite-plugin-electron-renderer": "^0.1.4",
-    "vue": "^3.2.26",
-    "vue-tsc": "^0.30.2"
+    "vite-plugin-electron-renderer": "^0.1.4"
   },
   "env": {
     "//": "Used in build scripts",
