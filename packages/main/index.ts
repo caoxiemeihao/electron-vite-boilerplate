@@ -7,6 +7,8 @@ import './samples/sqlite3'
 const isWin7 = os.release().startsWith('6.1')
 if (isWin7) app.disableHardwareAcceleration()
 
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+
 if (!app.requestSingleInstanceLock()) {
   app.quit()
   process.exit(0)
