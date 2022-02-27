@@ -1,6 +1,12 @@
+html, body, #app {
+  height: 100%;
+}
+
 body {
   margin: 0;
   line-height: 1.4;
+  padding-top: .5px;
+  background-color: rgba(77, 77, 77 , .1);
 }
 
 body, div, span, img, code {
