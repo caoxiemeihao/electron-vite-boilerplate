@@ -5,7 +5,7 @@
 
 ## Shown
 
-<img width="400px" src="https://raw.githubusercontent.com/caoxiemeihao/electron-vite-boilerplate/main/shown.png" />
+<img width="700px" src="https://raw.githubusercontent.com/caoxiemeihao/electron-vite-boilerplate/main/shown.png" />
 
 ## Overview
 
