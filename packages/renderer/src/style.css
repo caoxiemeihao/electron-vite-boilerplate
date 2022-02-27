@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  padding: 0;
   line-height: 1.4;
-  padding-top: .1px;
 }
 
 body, div, span, img, code {
@@ -15,7 +13,7 @@ body, div, span, img, code {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 20px;
+  margin-top: 60px;
 }
 
 .logo-box {
@@ -33,23 +31,4 @@ body, div, span, img, code {
 
 .logo-box img:not(:first-child) {
   margin-left: 47px;
-}
-
-.static-public {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.static-public code {
-  padding: 2px 4px;
-  margin: 0 4px;
-  border-radius: 4px;
-  background-color: rgba(77, 77, 77 , .07);
-  color: #304455;
-}
-
-.static-public img {
-  width: 47px;
 }

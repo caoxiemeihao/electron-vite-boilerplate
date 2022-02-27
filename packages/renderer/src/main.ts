@@ -19,10 +19,6 @@ function renderHTML() {
     <img src="${vite}" />
     <img src="${ts}" />
   </div>
-  <div class="static-public">
-    Place static files into the <code>src/renderer/public</code> folder
-    <img src="/images/node.png" />
-  </div>
   ${renderNodejsApi()}
   ${renderElectronStore()}
   ${renderSerialport()}
