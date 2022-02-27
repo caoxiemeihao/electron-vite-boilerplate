@@ -5,7 +5,7 @@ export default function () {
 
   return `
   <style>
-    .electron-store-box code { display:inline-block; padding:4px 11px; margin:4px 0px; width:770px; text-align:left; border-radius:4px; background:rgba(77, 77, 77 , .07); color:#304455; word-wrap:break-word; hyphens:auto; }
+    .electron-store-box code { display:inline-block; padding:4px 11px; margin:4px 0px; width:770px; text-align:left; border-radius:4px; background:rgb(38 42 55); color:aliceblue; word-wrap:break-word; hyphens:auto; }
   </style>
   <div class="electron-store-box">
     <h2>Electron Store</h2>

@@ -1,4 +1,4 @@
-html, body, #app {
+html, body {
   height: 100%;
 }
 
@@ -6,7 +6,7 @@ body {
   margin: 0;
   line-height: 1.4;
   padding-top: .5px;
-  background-color: rgba(77, 77, 77 , .1);
+  background-color: rgb(82 198 255);
 }
 
 body, div, span, img, code {
@@ -31,7 +31,7 @@ body, div, span, img, code {
 .logo-box img {
   height: 77px;
   padding: 7px;
-  background-color: rgba(77, 77, 77 , .07);
+  background-color: aliceblue;
   border-radius: 7px;
 }
 
