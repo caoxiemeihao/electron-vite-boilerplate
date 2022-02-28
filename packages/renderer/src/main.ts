@@ -1,9 +1,6 @@
 import renderNodejsApi from './samples/nodejs-api'
 import renderElectronStore from './samples/electron-store'
 import renderSerialport from './samples/serialport'
-import electron from './assets/electron.png'
-import vite from './assets/vite.svg'
-import ts from './assets/ts.svg'
 import './style.css'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
@@ -15,9 +12,7 @@ window.removeLoading()
 function renderHTML() {
   return `
   <div class="logo-box">
-    <img src="${electron}" />
-    <img src="${vite}" />
-    <img src="${ts}" />
+    <img height="124" src="/logo.svg" />
   </div>
   ${renderNodejsApi()}
   ${renderElectronStore()}
