@@ -1,8 +1,6 @@
 import os from 'os'
 import { join } from 'path'
 import { app, BrowserWindow } from 'electron'
-import './samples/electron-store'
-import './samples/sqlite3'
 
 const isWin7 = os.release().startsWith('6.1')
 if (isWin7) app.disableHardwareAcceleration()
@@ -28,6 +26,22 @@ async function createWindow() {
     },
   })
 
+  // Communicate with the Renderer-process.
+  win.webContents.on('ipc-message', (_, channel, ...args) => {
+    switch (channel) {
+      case 'app.getPath':
+        win?.webContents.send('app.getPath', app.getPath(args[0]));
+        break;
+      default:
+        break;
+    }
+  })
+
+  // Test active push message to Renderer-process.
+  win.webContents.on('did-finish-load', () => {
+    win?.webContents.send('main-process-message', (new Date).toLocaleString())
+  })
+
   if (app.isPackaged) {
     win.loadFile(join(__dirname, '../renderer/index.html'))
   } else {
@@ -37,11 +51,6 @@ async function createWindow() {
     win.loadURL(url)
     win.webContents.openDevTools()
   }
-
-  // Test active push message to Renderer-process.
-  win.webContents.on('did-finish-load', () => {
-    win?.webContents.send('main-process-message', (new Date).toLocaleString())
-  })
 }
 
 app.whenReady().then(createWindow)

@@ -1,5 +1,5 @@
 import renderNodejsApi from './samples/nodejs-api'
-import renderElectronStore from './samples/electron-store'
+import renderSqlite3 from './samples/sqlite3'
 import renderSerialport from './samples/serialport'
 import './style.css'
 
@@ -15,7 +15,7 @@ function renderHTML() {
     <img height="124" src="/logo.svg" />
   </div>
   ${renderNodejsApi()}
-  ${renderElectronStore()}
+  ${renderSqlite3()}
   ${renderSerialport()}
 `
 }

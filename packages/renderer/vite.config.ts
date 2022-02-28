@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     electronRenderer({
       resolve: {
-        'electron-store': 'export default require("electron-store");',
+        sqlite3: 'export default require("sqlite3");',
         serialport: 'export default require("serialport");',
       },
     }),
