@@ -12,7 +12,6 @@
     "build": "node scripts/build.mjs && electron-builder"
   },
   "dependencies": {
-    "electron-store": "^8.0.1",
     "serialport": "^10.0.2",
     "sqlite3": "^5.0.2"
   },
