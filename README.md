@@ -3,7 +3,7 @@
 [![awesome-vite](https://awesome.re/badge.svg)](https://github.com/vitejs/awesome-vite)
 [![Required Node.JS >= v14.17.0](https://img.shields.io/static/v1?label=node&message=%3E=14.17.0&logo=node.js&color=3f893e&style=flat)](https://nodejs.org/about/releases)
 
-<img src="https://raw.githubusercontent.com/caoxiemeihao/electron-vite-boilerplate/main/screenshot.png" />
+<img src="https://raw.githubusercontent.com/caoxiemeihao/electron-vite-boilerplate/main/packages/renderer/public/screenshot.png" />
 
 ## TODO
 
