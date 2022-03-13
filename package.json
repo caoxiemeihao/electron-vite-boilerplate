@@ -12,20 +12,20 @@
     "build": "node scripts/build.mjs && electron-builder"
   },
   "dependencies": {
-    "serialport": "^10.0.2",
+    "serialport": "^10.4.0",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "@types/serialport": "^8.0.2",
     "@types/sqlite3": "^3.1.8",
-    "electron": "16.0.2",
-    "electron-builder": "^22.14.5",
-    "typescript": "^4.5.4",
-    "vite": "^2.7.12",
+    "electron": "^17.1.2",
+    "electron-builder": "^22.14.13",
+    "typescript": "^4.6.2",
+    "vite": "^2.8.6",
     "vite-plugin-electron-renderer": "^0.1.4"
   },
   "env": {
     "//": "Used in build scripts",
-    "PORT": 5555
+    "PORT": 4444
   }
 }
