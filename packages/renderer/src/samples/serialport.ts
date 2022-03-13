@@ -7,7 +7,7 @@ import serialport from 'serialport'
 
 async function listSerialPorts() {
   try {
-    const ports = await serialport.list()
+    const ports = await serialport.SerialPort.list()
     if (ports.length === 0) {
       console.log('No ports discovered')
     }
@@ -27,13 +27,13 @@ export default function () {
     const oDiv = document.getElementById('serialport')
 
     if (ports.length && oDiv) {
-      const keys = Object.keys(ports[0]);
+      const keys = Object.keys(ports[0]) as (keyof typeof ports[0])[];
       oDiv.innerHTML = `
       <table border="1">
         <thead>
           ${keys.map(key => `<th>${key}</th>`).join('')}
         <thead>
-        ${ports.map(info => `<tr>${keys.map(key => `<td>${info[key as keyof serialport.PortInfo] || ''}</td>`).join('')}</tr>`).join('')}
+        ${ports.map(info => `<tr>${keys.map(key => `<td>${info[key] || ''}</td>`).join('')}</tr>`).join('')}
       </table>
       `;
     }
