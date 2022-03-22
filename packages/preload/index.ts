@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 import { contextBridge, ipcRenderer } from 'electron'
 import { domReady } from './utils'
 import { useLoading } from './loading'
@@ -9,6 +10,7 @@ domReady().then(appendLoading)
 
 // --------- Expose some API to the Renderer process. ---------
 contextBridge.exposeInMainWorld('fs', fs)
+contextBridge.exposeInMainWorld('path', path)
 contextBridge.exposeInMainWorld('removeLoading', removeLoading)
 contextBridge.exposeInMainWorld('ipcRenderer', withPrototype(ipcRenderer))
 

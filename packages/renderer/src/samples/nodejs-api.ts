@@ -1,5 +1,8 @@
-import path from 'path'
-import { ipcRenderer } from 'electron'
+const {
+  ipcRenderer,
+  fs,
+  path,
+} = window;
 
 export default function () {
   // Use ipcRenderer.on

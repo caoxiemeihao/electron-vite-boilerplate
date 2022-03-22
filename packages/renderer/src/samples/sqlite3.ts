@@ -1,38 +1,21 @@
-import path from 'path'
-import { ipcRenderer } from 'electron'
-import sqlite3 from 'sqlite3'
-
-function createSqlite3(userDataPath: string): Promise<sqlite3.Database> {
-  return new Promise((resolve, reject) => {
-    const dbpath = path.join(userDataPath, 'sqlite3.db')
-    const db = new sqlite3.Database(
-      dbpath,
-      (error) => {
-        if (error) {
-          reject(error)
-          return
-        }
-        resolve(db)
-      }
-    )
-  })
-}
+const { ipcRenderer } = window
 
 export default function () {
-  ipcRenderer.on('app.getPath', async (_ev, userDataPath) => {
+  setTimeout(async () => {
     const oDiv = document.getElementById('sqlite3')!
-    try {
-      const db = await createSqlite3(userDataPath)
+    const args = await ipcRenderer.invoke('sqlite3')
+    const [error, filename] = JSON.parse(args)
+
+    if (error) {
+      oDiv.innerHTML = error as string
+    } else {
       oDiv.innerHTML = `<code>
         [sqlite3] connect success.
         <br/>
-        ${db.filename}
+        ${filename}
       </code>`
-    } catch (error) {
-      oDiv.innerHTML = error as string
     }
-  })
-  ipcRenderer.send('app.getPath', 'userData')
+  }, 19)
 
   return `
   <style>

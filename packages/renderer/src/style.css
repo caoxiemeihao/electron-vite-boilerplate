@@ -21,7 +21,6 @@ body, div, span, img, code {
 }
 
 .logo-box {
-  display: flex;
   width: 100%;
-  justify-content: center;
+  margin-top: 14px;
 }
