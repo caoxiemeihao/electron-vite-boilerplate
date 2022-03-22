@@ -6,6 +6,7 @@ import pkg from '../../package.json'
 export default defineConfig({
   root: __dirname,
   mode: process.env.NODE_ENV,
+  base: './',
   build: {
     emptyOutDir: true,
     outDir: '../../dist/renderer',
