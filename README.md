@@ -5,31 +5,13 @@
 
 <img src="https://raw.githubusercontent.com/caoxiemeihao/electron-vite-boilerplate/main/packages/renderer/public/screenshot-transparent.png" />
 
-## TODO
-
-  - [ ] 🐞 SQLite3 is used in Renderer-process, which causes DevTools loading exception during HRM.  
-  在渲染进程中使用 SQLite3，在 HRM 时候会导致 DevTools 加载异常.  
-  DevTools was disconnected form the pate.
-
 ## Overview
 
 This is a project structure compact enough Electron + Vite template.
 
 The project focus on the cooperation between Vite and Electron.
 
-:electron: Enabled Electron and NodeJs in Renderer-process by **[vite-plugin-electron-renderer](https://www.npmjs.com/package/vite-plugin-electron-renderer)**.
-
-**Like this**
-
-```js
-// In Renderer-process
-
-import { readFileSync } from 'fs'
-import { ipcRenderer } from 'electron'
-
-readFileSync(/* something */)
-ipcRenderer.on(/* something */)
-```
+The template lists some common cases as much as possible.
 
 ## Run Setup
 
@@ -70,50 +52,6 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 ├   ├── renderer              Renderer-process source code
 ├       ├── vite.config.ts
 ├
-```
-
-## 🚧 Use SerialPort, SQLite3 or other node-native addons in Renderer-process
-
-1. First, yout need to make sure the deps in "dependencies". Because the project still needs it after packaged.
-
-2. Second, node-native addons may not be [Pre-Bundling](https://vitejs.dev/guide/dep-pre-bundling.html) correctly by Vite. So you need avoid this, and import it like ordinary NodeJs module.
-
-3. Third, through the above description, you can correctly import node-native addons in two ways.
-
-**The first way** - Use CommonJS syntax
-
-```js
-// In Renderer-process
-const SerialPort = require('serialport')
-const sqlite3 = require('sqlite3')
-```
-
-**The second way** - Use ESModule syntax - **Recommend 🎉**
-
-```js
-// In Renderer-process
-import serialport from 'serialport'
-import sqlite3 from 'sqlite3'
-```
-
-This way is actually just a syntax-sugar of CommonJS syntax. At the same time, [vite-plugin-electron-renderer](https://www.npmjs.com/package/vite-plugin-electron-renderer) needs to be configured.
-
-**Click to see more** 👉 [packages/renderer/vite.config.ts](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/packages/renderer/vite.config.ts)
-
-```js
-import electronRenderer from 'vite-plugin-electron-renderer'
-
-export default {
-  plugins: [
-    electronRenderer({
-      // configuration here
-      resolve: {
-        serialport: 'export default require("serialport");',
-        sqlite3: 'export default require("sqlite3");',
-      },
-    }),
-  ],
-}
 ```
 
 ## Use SerialPort, SQLite3 or other node-native addons in Main-process
