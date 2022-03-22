@@ -1,5 +1,4 @@
 import renderNodejsApi from './samples/nodejs-api'
-import renderSqlite3 from './samples/sqlite3'
 import renderSerialport from './samples/serialport'
 import './style.css'
 
@@ -11,11 +10,11 @@ window.removeLoading()
 
 function renderHTML() {
   return `
+  <div style="height:24px;"></div>
   <div class="logo-box">
     <img height="124" src="/logo.svg" />
   </div>
   ${renderNodejsApi()}
-  ${renderSqlite3()}
   ${renderSerialport()}
 `
 }

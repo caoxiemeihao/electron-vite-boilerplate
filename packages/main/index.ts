@@ -24,6 +24,11 @@ async function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    frame:false,
+    resizable: false,
+    transparent: true,
+    // https://github.com/electron/electron/issues/20357
+    backgroundColor: '#00000001',
   })
 
   // Communicate with the Renderer-process.
@@ -49,7 +54,7 @@ async function createWindow() {
     const url = `http://${process.env['VITE_DEV_SERVER_HOST']}:${process.env['VITE_DEV_SERVER_PORT']}`
 
     win.loadURL(url)
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools({ mode: 'undocked' })
   }
 }
 
