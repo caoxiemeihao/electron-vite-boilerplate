@@ -12,7 +12,7 @@ window.removeLoading()
 function renderHTML() {
   return `
   <div class="logo-box">
-    <img height="124" src="/logo.svg" />
+    <img height="124" src="./logo.svg" />
     ${renderNodejsApi()}
     ${renderSerialport()}
     ${renderSqlite3()}
