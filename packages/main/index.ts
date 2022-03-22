@@ -21,8 +21,6 @@ async function createWindow() {
     height: 700,
     webPreferences: {
       preload: join(__dirname, '../preload/index.cjs'),
-      nodeIntegration: true,
-      contextIsolation: false,
     },
     frame:false,
     resizable: false,

@@ -1,5 +1,5 @@
-import renderNodejsApi from './samples/nodejs-api'
-import renderSerialport from './samples/serialport'
+// import renderNodejsApi from './samples/nodejs-api'
+// import renderSerialport from './samples/serialport'
 import './style.css'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
@@ -14,7 +14,5 @@ function renderHTML() {
   <div class="logo-box">
     <img height="124" src="/logo.svg" />
   </div>
-  ${renderNodejsApi()}
-  ${renderSerialport()}
 `
 }
