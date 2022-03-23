@@ -7,5 +7,5 @@ import { moveFile } from 'move-file'
 
   await moveFile(source, dist)
 
-  console.log('The file has been moved')
+  // console.log('The file has been moved')
 })()
