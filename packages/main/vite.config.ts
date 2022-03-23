@@ -9,9 +9,9 @@ export default defineConfig({
     esmodule([
       'execa',
       'node-fetch',
-      { 'file-type': 'file-type/index.js' },
+      'file-type',
       'move-file',
-    ], { webpack: true }),
+    ]),
   ],
   build: {
     outDir: '../../dist/main',

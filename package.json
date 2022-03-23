@@ -26,7 +26,7 @@
     "node-fetch": "^3.2.3",
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
-    "vite-plugin-esmodule": "^1.1.2"
+    "vite-plugin-esmodule": "^1.2.0"
   },
   "env": {
     "VITE_DEV_SERVER_HOST": "127.0.0.1",
