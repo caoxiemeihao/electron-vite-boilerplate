@@ -3,6 +3,9 @@ import { join } from 'path'
 import { app, BrowserWindow } from 'electron'
 import './samples/serialport'
 import './samples/sqlite3'
+import './samples/execa'
+import './samples/node-fetch'
+import './samples/file-type'
 
 const isWin7 = os.release().startsWith('6.1')
 if (isWin7) app.disableHardwareAcceleration()
