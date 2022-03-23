@@ -1,9 +1,17 @@
 import { builtinModules } from 'module'
 import { defineConfig } from 'vite'
+import esmodule from 'vite-plugin-esmodule'
 import pkg from '../../package.json'
 
 export default defineConfig({
   root: __dirname,
+  plugins: [
+    esmodule([
+      'execa',
+      'node-fetch',
+      { 'file-type': 'file-type/index.js' },
+    ], { webpack: true }),
+  ],
   build: {
     outDir: '../../dist/main',
     lib: {
