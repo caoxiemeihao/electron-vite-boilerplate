@@ -10,6 +10,7 @@ export default defineConfig({
       'execa',
       'node-fetch',
       { 'file-type': 'file-type/index.js' },
+      'move-file',
     ], { webpack: true }),
   ],
   build: {
