@@ -22,7 +22,7 @@
     "electron-builder": "^22.14.13",
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
-    "vite-plugin-electron-renderer": "^0.2.2",
+    "vite-plugin-electron-renderer": "^0.3.0",
     "vite-plugin-resolve": "^2.0.1"
   },
   "env": {
