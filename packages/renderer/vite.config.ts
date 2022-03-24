@@ -26,5 +26,6 @@ export default defineConfig({
     alias: {
       '@': join(__dirname, 'src'),
     },
+    conditions: ['node'],
   },
 })
