@@ -1,6 +1,6 @@
-import renderNodejsApi from './samples/nodejs-api'
-import renderSerialport from './samples/serialport'
-import renderSqlite3 from './samples/sqlite3'
+import renderNodejsApi from '@/samples/nodejs-api'
+import renderSerialport from '@/samples/serialport'
+import renderSqlite3 from '@/samples/sqlite3'
 import './style.css'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
