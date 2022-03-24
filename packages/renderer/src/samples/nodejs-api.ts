@@ -1,6 +1,8 @@
 import path from 'path'
 import { ipcRenderer } from 'electron'
 
+console.log(ipcRenderer)
+
 export default function () {
   // Use ipcRenderer.on
   ipcRenderer.on('main-process-message', (_event, message) => {
