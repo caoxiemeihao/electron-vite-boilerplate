@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "node scripts/watch.mjs",
-    "build": "node scripts/build.mjs && electron-builder"
+    "build": "node scripts/build.mjs && electron-builder",
+    "init": "git config core.hooksPath .git/hooks/ && rm -rf .git/hooks && npx simple-git-hooks"
   },
   "dependencies": {
     "serialport": "^10.4.0",
@@ -23,7 +24,9 @@
     "execa": "^6.1.0",
     "file-type": "^17.1.1",
     "move-file": "^3.0.0",
+    "nano-staged": "^0.6.0",
     "node-fetch": "^3.2.3",
+    "simple-git-hooks": "^2.7.0",
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
     "vite-plugin-esmodule": "^1.2.0"
