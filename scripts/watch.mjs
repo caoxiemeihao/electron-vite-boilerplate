@@ -27,7 +27,7 @@ function watchMain(server) {
       },
     }],
     build: {
-      watch: true,
+      watch: {},
     },
   })
 }
@@ -46,7 +46,7 @@ function watchPreload(server) {
       },
     }],
     build: {
-      watch: true,
+      watch: {},
     },
   })
 }
