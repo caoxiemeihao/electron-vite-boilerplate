@@ -25,7 +25,7 @@
     "node-fetch": "^3.2.3",
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
-    "vite-plugin-electron-renderer": "^0.3.1",
+    "vite-plugin-electron": "^0.4.2",
     "vite-plugin-resolve": "^2.0.1"
   },
   "env": {
