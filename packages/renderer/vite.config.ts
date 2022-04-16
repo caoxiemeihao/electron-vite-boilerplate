@@ -2,6 +2,7 @@ import { join } from 'path'
 import { defineConfig } from 'vite'
 import resolve from 'vite-plugin-resolve'
 import electronRenderer from 'vite-plugin-electron/renderer'
+import polyfillExports from 'vite-plugin-electron/polyfill-exports'
 import pkg from '../../package.json'
 
 // https://vitejs.dev/config/
@@ -10,6 +11,7 @@ export default defineConfig({
   mode: process.env.NODE_ENV,
   plugins: [
     electronRenderer(),
+    polyfillExports(),
     resolve({
       sqlite3: 'export default require("sqlite3");',
       serialport: 'export default require("serialport");',
@@ -28,5 +30,6 @@ export default defineConfig({
     alias: {
       '@': join(__dirname, 'src'),
     },
+    conditions: ['node'],
   },
 })
