@@ -13,7 +13,7 @@ function renderHTML() {
   return `
   <div style="height:24px;"></div>
   <div class="logo-box">
-    <img height="124" src="/logo.svg" />
+    <img height="124" src="./logo.svg" />
   </div>
   ${renderNodejsApi()}
   ${renderSerialport()}
