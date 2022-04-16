@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { defineConfig } from 'vite'
 import resolve from 'vite-plugin-resolve'
-import electronRenderer from 'vite-plugin-electron-renderer'
+import electronRenderer from 'vite-plugin-electron/renderer'
 import pkg from '../../package.json'
 
 // https://vitejs.dev/config/
@@ -17,6 +17,8 @@ export default defineConfig({
   ],
   build: {
     outDir: '../../dist/renderer',
+    emptyOutDir: true,
+    sourcemap: true,
   },
   server: {
     host: pkg.env.VITE_DEV_SERVER_HOST,
