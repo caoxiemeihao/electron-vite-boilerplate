@@ -3,7 +3,7 @@
 [![awesome-vite](https://awesome.re/badge.svg)](https://github.com/vitejs/awesome-vite)
 [![Required Node.JS >= v14.17.0](https://img.shields.io/static/v1?label=node&message=%3E=14.17.0&logo=node.js&color=3f893e&style=flat)](https://nodejs.org/about/releases)
 
-<img src="https://raw.githubusercontent.com/caoxiemeihao/electron-vite-boilerplate/main/packages/renderer/public/screenshot-transparent.png" />
+<img src="https://raw.githubusercontent.com/electron-vite/electron-vite-boilerplate/main/packages/renderer/public/screenshot-transparent.png" />
 
 ## Overview
 
@@ -11,13 +11,13 @@ This is a project structure compact enough Electron + Vite template.
 
 The project focus on the cooperation between Vite and Electron.
 
-The template lists some common cases as much as possible.
+**The template lists some common cases as much as possible.**
 
 ## Run Setup
 
   ```bash
   # clone the project
-  git clone https://github.com/caoxiemeihao/electron-vite-boilerplate.git
+  git clone https://github.com/electron-vite/electron-vite-boilerplate.git
 
   # enter the project directory
   cd electron-vite-boilerplate
@@ -59,7 +59,7 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 Main-process, Preload-script are also built with Vite, and they are just built as [build.lib](https://vitejs.dev/config/#build-lib).  
 So they just need to configure Rollup.  
 
-**Click to see more** 👉 [packages/main/vite.config.ts](https://github.com/caoxiemeihao/electron-vite-boilerplate/blob/main/packages/main/vite.config.ts)
+**Click to see more** 👉 [packages/main/vite.config.ts](https://github.com/electron-vite/electron-vite-boilerplate/blob/main/packages/main/vite.config.ts)
 
 ```js
 export default {
