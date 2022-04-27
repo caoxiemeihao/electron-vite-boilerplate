@@ -34,24 +34,22 @@ The project focus on the cooperation between Vite and Electron.
 Once `dev` or `build` npm-script executed will be generate named `dist` folder. It has children dir of same as `src` folder, the purpose of this design can ensure the correct path calculation.
 
 ```tree
-├
 ├── dist                      After build, it's generated according to the "packages" directory
-├   ├── main
-├   ├── preload
-├   ├── renderer
-├
+|   ├── main
+|   ├── preload
+|   └── renderer
+|
 ├── scripts
-├   ├── build.mjs             Develop script -> npm run build
-├   ├── watch.mjs             Develop script -> npm run dev
-├
+|   ├── build.mjs             Develop script -> npm run build
+|   └── watch.mjs             Develop script -> npm run dev
+|
 ├── packages
-├   ├── main                  Main-process source code
-├       ├── vite.config.ts
-├   ├── preload               Preload-script source code
-├       ├── vite.config.ts
-├   ├── renderer              Renderer-process source code
-├       ├── vite.config.ts
-├
+|   ├── main                  Main-process source code
+|   |   └── vite.config.ts
+|   ├── preload               Preload-script source code
+|   |   └── vite.config.ts
+|   └── renderer              Renderer-process source code
+|       └── vite.config.ts
 ```
 
 ## Use SerialPort, SQLite3 or other node-native addons in Main-process
