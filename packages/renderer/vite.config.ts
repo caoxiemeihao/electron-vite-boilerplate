@@ -13,6 +13,7 @@ export default defineConfig({
     electronRenderer(),
     polyfillExports(),
     resolve({
+      // ESM format code snippets
       sqlite3: 'export default require("sqlite3");',
       serialport: 'export default require("serialport");',
     }),
