@@ -66,7 +66,7 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 |   |   └── vite.config.ts
 |   ├── preload               Preload-script source code
 |   |   └── vite.config.ts
-|   ├── renderer              Renderer-process source code
+|   └── renderer              Renderer-process source code
 |       └── vite.config.ts
 ```
 
