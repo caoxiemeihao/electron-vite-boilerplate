@@ -1,12 +1,10 @@
-
-
 /**
  * https://tobiasahlin.com/spinkit
  * https://connoratherton.com/loaders
  * https://projects.lukehaas.me/css-loaders
  * https://matejkustec.github.io/SpinThatShit
  */
-export function useLoading() {
+ export function useLoading() {
   const className = `loaders-css__square-spin`
   const styleContent = `
 @keyframes square-spin {
@@ -45,12 +43,25 @@ export function useLoading() {
 
   return {
     appendLoading() {
-      document.head.appendChild(oStyle)
-      document.body.appendChild(oDiv)
+      safe.append(document.head, oStyle)
+      safe.append(document.body, oDiv)
     },
     removeLoading() {
-      document.head.removeChild(oStyle)
-      document.body.removeChild(oDiv)
+      safe.remove(document.head, oStyle)
+      safe.remove(document.body, oDiv)
     },
   }
+}
+
+const safe = {
+  append(parent: HTMLElement, child: HTMLElement) {
+    if (!Array.from(parent.children).find(e => e === child)) {
+      return parent.appendChild(child)
+    }
+  },
+  remove(parent: HTMLElement, child: HTMLElement) {
+    if (Array.from(parent.children).find(e => e === child)) {
+      return parent.removeChild(child)
+    }
+  },
 }
