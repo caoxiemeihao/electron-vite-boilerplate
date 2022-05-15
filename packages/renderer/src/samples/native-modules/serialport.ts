@@ -1,5 +1,5 @@
 // https://github.com/serialport/electron-serialport/blob/HEAD/renderer.js
-import serialport from 'serialport'
+import serialport, { SerialPort, SerialPortMock } from 'serialport'
 
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.

@@ -1,6 +1,7 @@
 import { join } from 'path'
 import { defineConfig } from 'vite'
 import resolve from 'vite-plugin-resolve'
+import { lib2esm } from 'vite-plugin-resolve/presets'
 import electronRenderer from 'vite-plugin-electron/renderer'
 import polyfillExports from 'vite-plugin-electron/polyfill-exports'
 import pkg from '../../package.json'
@@ -15,7 +16,17 @@ export default defineConfig({
     resolve({
       // ESM format code snippets
       sqlite3: 'export default require("sqlite3");',
-      serialport: 'export default require("serialport");',
+      // Use lib2esm() to easy to convert ESM
+      serialport: lib2esm(
+        // CJS lib name
+        'serialport',
+        // export memebers
+        [
+          'SerialPort',
+          'SerialPortMock',
+        ],
+        { format: 'cjs' },
+      ),
     }),
   ],
   build: {
