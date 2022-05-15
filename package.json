@@ -13,19 +13,19 @@
   },
   "dependencies": {
     "serialport": "^10.4.0",
-    "sqlite3": "^5.0.3"
+    "sqlite3": "^5.0.8"
   },
   "devDependencies": {
     "@types/sqlite3": "^3.1.8",
-    "electron": "^18.0.4",
+    "electron": "^18.2.3",
     "electron-builder": "^23.0.3",
     "execa": "^6.1.0",
     "file-type": "^17.1.1",
-    "node-fetch": "^3.2.3",
-    "typescript": "^4.6.3",
-    "vite": "^2.9.5",
-    "vite-plugin-electron": "^0.4.2",
-    "vite-plugin-resolve": "^2.0.4"
+    "node-fetch": "^3.2.4",
+    "typescript": "^4.6.4",
+    "vite": "^2.9.9",
+    "vite-plugin-electron": "^0.4.4",
+    "vite-plugin-resolve": "^2.1.0"
   },
   "env": {
     "VITE_DEV_SERVER_HOST": "127.0.0.1",
