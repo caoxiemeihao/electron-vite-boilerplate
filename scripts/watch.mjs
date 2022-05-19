@@ -22,8 +22,12 @@ function watchMain(server) {
     plugins: [{
       name: 'electron-main-watcher',
       writeBundle() {
-        electronProcess && electronProcess.kill()
+        if (electronProcess) {
+          electronProcess.removeAllListeners()
+          electronProcess.kill()
+        }
         electronProcess = spawn(electron, ['.'], { stdio: 'inherit', env })
+        electronProcess.once('exit', process.exit)
       },
     }],
     build: {
