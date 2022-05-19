@@ -24,6 +24,7 @@ function watchMain(server) {
       writeBundle() {
         electronProcess && electronProcess.kill()
         electronProcess = spawn(electron, ['.'], { stdio: 'inherit', env })
+        electronProcess.on('exit', process.exit)
       },
     }],
     build: {
