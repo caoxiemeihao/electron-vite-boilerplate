@@ -23,7 +23,7 @@
     "file-type": "^17.1.1",
     "move-file": "^3.0.0",
     "node-fetch": "^3.2.4",
-    "typescript": "^4.6.4",
+    "typescript": "^4.7.2",
     "vite": "^2.9.9",
     "vite-plugin-esmodule": "^1.2.5"
   },
