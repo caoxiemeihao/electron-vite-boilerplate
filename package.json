@@ -20,7 +20,7 @@
     "electron": "^18.2.3",
     "electron-builder": "^23.0.3",
     "execa": "^6.1.0",
-    "file-type": "^17.1.1",
+    "file-type": "^17.1.2",
     "move-file": "^3.0.0",
     "node-fetch": "^3.2.4",
     "typescript": "^4.6.4",
