@@ -1,6 +1,7 @@
 # electron-vite-boilerplate
 
-A Electron + Vite boilerplate of the nature of learning.  
+A Electron + Vite boilerplate of the nature of learning.
+
 *学习性的 Electron + Vite 样板工程*  
 
 [![awesome-vite](https://awesome.re/badge.svg)](https://github.com/vitejs/awesome-vite)
@@ -28,8 +29,9 @@ npm run dev
 
 ## Directory
 
-Once `dev` or `build` npm-script executed will be generate named `dist` folder. It has children dir of same as `packages` folder, the purpose of this design can ensure the correct path calculation.  
-*一旦 `dev` 或 `build` 命令执行过后，将会生成与 `packages` 相同结构 `dist` 文件夹，这样设计的目的是保障构建后路径计算的正确性*  
+Once `dev` or `build` npm-script executed will be generate named `dist` folder. It has children dir of same as `packages` folder, the purpose of this design can ensure the correct path calculation.
+
+*一旦 `dev` 或 `build` 命令执行过后，将会生成与 `packages` 相同结构 `dist` 文件夹，这样设计的目的是保障构建后路径计算的正确性。*
 
 ```tree
 ├── dist                      After build, it's generated according to the "packages" directory
@@ -49,3 +51,10 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
     └── renderer              Renderer-process source code
         └── vite.config.ts
 ```
+
+## 🚨 `dependencies` vs `devDependencies`
+
+- Put Node.js packages in `dependencies`
+- Put Web packages in `devDependencies`
+
+See more 👉 [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
