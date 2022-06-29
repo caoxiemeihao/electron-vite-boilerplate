@@ -31,17 +31,6 @@ async function createWindow() {
     backgroundColor: '#00000001',
   })
 
-  // Communicate with the Renderer-process.
-  win.webContents.on('ipc-message', (_, channel, ...args) => {
-    switch (channel) {
-      case 'app.getPath':
-        win?.webContents.send('app.getPath', app.getPath(args[0]));
-        break;
-      default:
-        break;
-    }
-  })
-
   // Test actively push message to the Electron-Renderer
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', (new Date).toLocaleString())
