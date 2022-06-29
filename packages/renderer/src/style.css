@@ -22,5 +22,8 @@ body, div, span, img, code {
 
 .logo-box {
   width: 100%;
-  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 24px);
 }
