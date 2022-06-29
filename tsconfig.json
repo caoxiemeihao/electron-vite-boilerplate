@@ -1,5 +1,4 @@
 {
-  "extends": "./paths.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
