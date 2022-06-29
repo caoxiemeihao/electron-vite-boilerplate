@@ -1,18 +1,9 @@
 import { builtinModules } from 'module'
 import { defineConfig } from 'vite'
-import esmodule from 'vite-plugin-esmodule'
 import pkg from '../../package.json'
 
 export default defineConfig({
   root: __dirname,
-  plugins: [
-    esmodule([
-      'execa',
-      'node-fetch',
-      'file-type',
-      'move-file',
-    ]),
-  ],
   build: {
     outDir: '../../dist/main',
     emptyOutDir: true,
