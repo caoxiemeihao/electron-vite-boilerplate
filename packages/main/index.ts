@@ -24,7 +24,7 @@ async function createWindow() {
       contextIsolation: false,
       nodeIntegration: true,
     },
-    frame:false,
+    frame: false,
     resizable: false,
     transparent: true,
     // https://github.com/electron/electron/issues/20357
@@ -42,7 +42,7 @@ async function createWindow() {
     }
   })
 
-  // Test active push message to Renderer-process.
+  // Test actively push message to the Electron-Renderer
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', (new Date).toLocaleString())
   })
