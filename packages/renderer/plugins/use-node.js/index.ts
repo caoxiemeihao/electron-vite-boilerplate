@@ -169,11 +169,9 @@ function initModules(config: ResolvedConfig, options: Options) {
 
   // Resolve package.json dependencies
   let pkgId = path.join(config.root, 'package.json')
-  console.log(fs.existsSync(pkgId), pkgId)
   if (!fs.existsSync(pkgId)) {
     pkgId = path.join(process.cwd(), 'package.json')
   }
-  console.log(fs.existsSync(pkgId), pkgId)
   if (fs.existsSync(pkgId)) {
     const pkg = require(pkgId)
     // TODO: Nested package name
