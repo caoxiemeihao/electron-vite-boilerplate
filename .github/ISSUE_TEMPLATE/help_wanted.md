@@ -1,5 +1,6 @@
 ---
-name: Help_Wanted
+
+name: 🥺 Help wanted
 about: Confuse about the use of electron-vue-vite
 title: "[Help] the title of Help_Want report"
 labels: help wanted
@@ -7,10 +8,4 @@ assignees: ''
 
 ---
 
-#### Describe the problem you Confuse
-
-A clear and concise description of what you are confusing about.
-
-#### More detail (optional)
-
-Add any other context or screenshots.
+#### Describe the problem you confuse
