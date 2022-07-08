@@ -162,7 +162,7 @@ ${exportMembers}
 }
 
 function initModules(config: ResolvedConfig, options: Options) {
-  const builtins = builtinModules.filter(e => !e.startsWith('_')).map(e => [e, `node:${e}`]).flat()
+  const builtins = builtinModules.filter(e => !e.startsWith('_')); builtins.push('electron', ...builtins.map(m => `node:${m}`))
   // dependencies of package.json
   const dependencies: string[] = []
   let modules: string[] = []
