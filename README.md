@@ -62,18 +62,9 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 
 See more 👉 [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
 
-## 🚨 ESM packages
 
-**e.g.** `node-fetch` `execa` `got` ...others
+## 🚨 Node.js ESM packages
 
-1. `npm i vite-plugin-esmodule -D`
-2. Configure in vite.config.ts
+**e.g.** `node-fetch` `execa` `got` ...
 
-```ts
-import esmodule from 'vite-plugin-esmodule'
-export default {
-  plugins: [
-    esmodule(['got', 'execa', 'node-fetch']),
-  ],
-}
-```
+[👉 Using Node.js ESM packages in Electron-Renderer](https://github.com/electron-vite/vite-plugin-electron-renderer#-nodejs-esm-packages)
