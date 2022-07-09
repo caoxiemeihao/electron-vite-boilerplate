@@ -6,10 +6,6 @@ import electron from 'electron'
  * @type {(server: import('vite').ViteDevServer) => Promise<import('rollup').RollupWatcher>}
  */
 function watchMain(server) {
-  /**
-   * @type {import('child_process').ChildProcessWithoutNullStreams | null}
-   */
-  let electronProcess = null
   const address = server.httpServer.address()
   const env = Object.assign(process.env, {
     VITE_DEV_SERVER_HOST: address.address,
@@ -22,12 +18,12 @@ function watchMain(server) {
     plugins: [{
       name: 'electron-main-watcher',
       writeBundle() {
-        if (electronProcess) {
-          electronProcess.removeAllListeners()
-          electronProcess.kill()
+        if (process.electronApp) {
+          process.electronApp.removeAllListeners()
+          process.electronApp.kill()
         }
-        electronProcess = spawn(electron, ['.'], { stdio: 'inherit', env })
-        electronProcess.once('exit', process.exit)
+        process.electronApp = spawn(electron, ['.'], { stdio: 'inherit', env })
+        process.electronApp.once('exit', process.exit)
       },
     }],
     build: {
