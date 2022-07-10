@@ -49,6 +49,10 @@ export {
 }`],
   ])
 
+  // When `electron` files or folders exist in the root directory, it will cause Vite to incorrectly splicing the `/@fs/` prefix.
+  // Here, use `\0` prefix avoid this behavior
+  const prefix = '\0'
+
   return {
     name: 'vite-plugin-electron-renderer:use-node.js',
     // Bypassing Vite's builtin 'vite:resolve' plugin
@@ -123,7 +127,7 @@ export {
     resolveId(source) {
       if (env.command === 'serve') {
         if (ESM_deps.includes(source)) return // by vite-plugin-esmodule
-        if (CJS_modules.includes(source)) return source
+        if (CJS_modules.includes(source)) return prefix + source
       }
     },
     load(id) {
@@ -157,6 +161,7 @@ export {
          * ```
          */
 
+        id = id.replace(prefix, '')
         if (CJS_modules.includes(id)) {
           const cache = moduleCache.get(id)
           if (cache) return cache
