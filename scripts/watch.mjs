@@ -2,6 +2,9 @@ import { spawn } from 'child_process'
 import { createServer, build } from 'vite'
 import electron from 'electron'
 
+const parsed = new URL(import.meta.url)
+const isDebug = parsed.searchParams.get('debug') // vscode
+
 /**
  * @type {(server: import('vite').ViteDevServer) => Promise<import('rollup').RollupWatcher>}
  */
@@ -15,7 +18,7 @@ function watchMain(server) {
   return build({
     configFile: 'packages/main/vite.config.ts',
     mode: 'development',
-    plugins: [{
+    plugins: [isDebug ? null : {
       name: 'electron-main-watcher',
       writeBundle() {
         if (process.electronApp) {
@@ -25,7 +28,7 @@ function watchMain(server) {
         process.electronApp = spawn(electron, ['.'], { stdio: 'inherit', env })
         process.electronApp.once('exit', process.exit)
       },
-    }],
+    }].filter(Boolean),
     build: {
       watch: {},
     },
