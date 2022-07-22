@@ -8,6 +8,7 @@ export default defineConfig({
     outDir: '../../dist/main',
     emptyOutDir: true,
     minify: process.env./* from mode option */NODE_ENV === 'production',
+    // For debug
     sourcemap: true,
     lib: {
       entry: 'index.ts',
