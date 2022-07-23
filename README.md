@@ -2,17 +2,17 @@
 
 A Electron + Vite boilerplate of the nature of learning.
 
-*学习性的 Electron + Vite 样板工程*
+*学习性的 Electron + Vite 样板工程!*
 
 [![awesome-vite](https://awesome.re/badge.svg)](https://github.com/vitejs/awesome-vite)
 [![Required Node.JS >= v14.17.0](https://img.shields.io/static/v1?label=node&message=%3E=14.17.0&logo=node.js&color=3f893e)](https://nodejs.org/about/releases)
-![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-boilerplate)
-![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-boilerplate?color=fa6470)
+[![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-boilerplate)](https://github.com/electron-vite/electron-vite-boilerplate/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-boilerplate?color=fa6470)](https://github.com/electron-vite/electron-vite-boilerplate)
 
-📦 Out of the box  
-🚚 Include only necessary dependencies  
+- 📦 Out of the box  
+- 🚚 Include only necessary dependencies  
 
-<img src="https://raw.githubusercontent.com/electron-vite/electron-vite-boilerplate/main/packages/renderer/public/screenshot-transparent.png" />
+![screenshot](https://raw.githubusercontent.com/electron-vite/electron-vite-boilerplate/main/packages/renderer/public/screenshot-transparent.png)
 
 ## Run Setup
 
@@ -61,7 +61,6 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 - Put Web packages in `devDependencies`
 
 See more 👉 [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
-
 
 ## 🚨 Node.js ESM packages
 
