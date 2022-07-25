@@ -1,24 +1,89 @@
 import fs from 'fs'
 import path from 'path'
 import { builtinModules } from 'module'
-import type { ResolvedConfig, Plugin, ConfigEnv } from 'vite'
+import {
+  type Plugin,
+  type ConfigEnv,
+  normalizePath,
+} from 'vite'
 
 export interface Options {
   /**
    * Explicitly include/exclude some CJS modules  
-   * `modules` includes `dependencies` of package.json, Node.js's `builtinModules` and `electron`  
+   * `modules` includes `dependencies` of package.json  
    */
-  resolve?: (modules: string[]) => typeof modules | undefined
+  resolve?: (modules: string[]) => string[] | void
 }
 
-export default function useNodeJs(options = {}): Plugin {
-  let env: ConfigEnv
-  const builtins: string[] = []
-  const dependencies: string[] = []
-  const ESM_deps: string[] = []
-  const CJS_modules: string[] = [] // builtins + dependencies
-  const moduleCache = new Map([
-    ['electron', `
+// https://www.w3schools.com/js/js_reserved.asp
+const keywords = [
+  'abstract',
+  'arguments',
+  'await',
+  'boolean',
+  'break',
+  'byte',
+  'case',
+  'catch',
+  'char',
+  'class',
+  'const',
+  'continue',
+  'debugger',
+  'default',
+  'delete',
+  'do',
+  'double',
+  'else',
+  'enum',
+  'eval',
+  'export',
+  'extends',
+  'false',
+  'final',
+  'finally',
+  'float',
+  'for',
+  'function',
+  'goto',
+  'if',
+  'implements',
+  'import',
+  'in',
+  'instanceof',
+  'int',
+  'interface',
+  'let',
+  'long',
+  'native',
+  'new',
+  'null',
+  'package',
+  'private',
+  'protected',
+  'public',
+  'return',
+  'short',
+  'static',
+  'super',
+  'switch',
+  'synchronized',
+  'this',
+  'throw',
+  'throws',
+  'transient',
+  'true',
+  'try',
+  'typeof',
+  'var',
+  'void',
+  'volatile',
+  'while',
+  'with',
+  'yield',
+]
+
+const electron = `
 /**
  * All exports module see https://www.electronjs.org -> API -> Renderer Process Modules
  */
@@ -46,8 +111,16 @@ export {
   webFrame,
   desktopCapturer,
   deprecate,
-}`],
-  ])
+}
+`.trim()
+
+export default function useNodeJs(options: Options = {}): Plugin {
+  let env: ConfigEnv
+  const builtins: string[] = []
+  const dependencies: string[] = []
+  const ESM_deps: string[] = []
+  const CJS_modules: string[] = [] // builtins + dependencies
+  const moduleCache = new Map([['electron', electron]])
 
   // When `electron` files or folders exist in the root directory, it will cause Vite to incorrectly splicing the `/@fs/` prefix.
   // Here, use `\0` prefix avoid this behavior
@@ -61,13 +134,36 @@ export {
     config(config, _env) {
       env = _env
 
+      // https://github.com/vitejs/vite/blob/53799e1cced7957f9877a5b5c9b6351b48e216a7/packages/vite/src/node/config.ts#L439-L442
+      const root = normalizePath(config.root ? path.resolve(config.root) : process.cwd())
+      const resolved = resolveModules(root)
+
+      builtins.push(...resolved.builtins)
+      dependencies.push(...resolved.dependencies)
+      ESM_deps.push(...resolved.ESM_deps)
+
+      // Since `vite-plugin-electron-renderer@0.5.10` `dependencies(NodeJs_pkgs)` fully controlled by the user.
+      // Because `dependencies(NodeJs_pkgs)` may contain Web packages. e.g. `vue`, `react`.
+      // Opinionated treat Web packages as external modules, which will cause errors.
+      let NodeJs_pkgs: string[] = []
+      if (options.resolve) {
+        const pkgs = options.resolve(dependencies)
+        if (pkgs) {
+          NodeJs_pkgs = pkgs
+        }
+      }
+
+      CJS_modules.push(...builtins.concat(NodeJs_pkgs))
+
       if (env.command === 'serve') {
         if (!config.resolve) config.resolve = {}
         if (!config.resolve.conditions) config.resolve.conditions = ['node']
 
         if (!config.optimizeDeps) config.optimizeDeps = {}
         if (!config.optimizeDeps.exclude) config.optimizeDeps.exclude = []
-        config.optimizeDeps.exclude.push('electron')
+
+        // Node.js packages in dependencies and `electron` should not be Pre-Building
+        config.optimizeDeps.exclude.push(...NodeJs_pkgs, 'electron')
 
         return config
       }
@@ -89,12 +185,12 @@ export {
           external = CJS_modules.concat(external)
         } else if (typeof external === 'function') {
           const original = external
-          external = function (source, importer, isResolved) {
+          external = function externalFn(source, importer, isResolved) {
             if (CJS_modules.includes(source)) {
               return true
             }
-            return original(source, importer, isResolved);
-          };
+            return original(source, importer, isResolved)
+          }
         } else {
           external = CJS_modules
         }
@@ -116,14 +212,6 @@ export {
       }
 
     },
-    configResolved(config) {
-      const resolved = resolveModules(config, options)
-
-      builtins.push(...resolved.builtins)
-      dependencies.push(...resolved.dependencies)
-      ESM_deps.push(...resolved.ESM_deps)
-      CJS_modules.push(...builtins.concat(dependencies))
-    },
     resolveId(source) {
       if (env.command === 'serve') {
         if (ESM_deps.includes(source)) return // by vite-plugin-esmodule
@@ -136,27 +224,27 @@ export {
          * ```
          * 🎯 Using Node.js packages(CJS) in Electron-Renderer(vite serve)
          * 
-         * ┏———————————————————————————————┓                                ┏—————————————————┓
-         * │ import { readFile } from 'fs' │                                │ Vite dev server │
-         * ┗———————————————————————————————┛                                ┗—————————————————┛
-         *                │                                                          │
-         *                │ 1. HTTP(Request): fs module                              │
-         *                │ ———————————————————————————————————————————————————————> │
-         *                │                                                          │
-         *                │                                                          │
-         *                │ 2. Intercept in load-hook(vite-plugin-electron-renderer) │
-         *                │ 3. Generate a virtual module(fs)                         │
-         *                │    ↓                                                     │
-         *                │    const _M_ = require('fs')                             │
-         *                │    export const readFile = _M_.readFile                  │
-         *                │                                                          │
-         *                │                                                          │
-         *                │ 4. HTTP(Response): fs module                             │
-         *                │ <——————————————————————————————————————————————————————— │
-         *                │                                                          │
-         * ┏———————————————————————————————┓                                ┏—————————————————┓
-         * │ import { readFile } from 'fs' │                                │ Vite dev server │
-         * ┗———————————————————————————————┛                                ┗—————————————————┛
+         * ┏————————————————————————————————————————┓                    ┏—————————————————┓
+         * │ import { ipcRenderer } from 'electron' │                    │ Vite dev server │
+         * ┗————————————————————————————————————————┛                    ┗—————————————————┛
+         *                    │                                                   │
+         *                    │ 1. HTTP(Request): electron module                 │
+         *                    │ ————————————————————————————————————————————————> │
+         *                    │                                                   │
+         *                    │                                                   │
+         *                    │ 2. Intercept in load-hook(Plugin)                 │
+         *                    │ 3. Generate a virtual ESM module(electron)        │
+         *                    │    ↓                                              │
+         *                    │    const { ipcRenderer } = require('electron')    │
+         *                    │    export { ipcRenderer }                         │
+         *                    │                                                   │
+         *                    │                                                   │
+         *                    │ 4. HTTP(Response): electron module                │
+         *                    │ <———————————————————————————————————————————————— │
+         *                    │                                                   │
+         * ┏————————————————————————————————————————┓                    ┏—————————————————┓
+         * │ import { ipcRenderer } from 'electron' │                    │ Vite dev server │
+         * ┗————————————————————————————————————————┛                    ┗—————————————————┛
          * 
          * ```
          */
@@ -171,7 +259,8 @@ export {
           const exportDefault = `const _D_ = _M_.default || _M_;\nexport { _D_ as default };`
           const exportMembers = Object
             .keys(nodeModule)
-            .filter(n => n !== 'default')
+            // https://github.com/electron-vite/electron-vite-react/issues/48
+            .filter(n => !keywords.includes(n))
             .map(attr => `export const ${attr} = _M_.${attr};`).join('\n')
           const nodeModuleCodeSnippet = `
   ${requireModule}
@@ -188,8 +277,7 @@ export {
   }
 }
 
-function resolveModules(config: ResolvedConfig, options: Options) {
-  const root = config.root
+export function resolveModules(root: string, options: Options = {}) {
   const cwd = process.cwd()
   const builtins = builtinModules.filter(e => !e.startsWith('_')); builtins.push('electron', ...builtins.map(m => `node:${m}`))
   // dependencies of package.json
@@ -205,7 +293,7 @@ function resolveModules(config: ResolvedConfig, options: Options) {
       const _pkgId = lookupFile(
         'package.json',
         [root, cwd].map(r => `${r}/node_modules/${npmPkg}`),
-      );
+      )
       if (_pkgId) {
         const _pkg = require(_pkgId)
         if (_pkg.type === 'module') {

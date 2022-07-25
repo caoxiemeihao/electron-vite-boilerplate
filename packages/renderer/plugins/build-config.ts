@@ -13,6 +13,7 @@ export default function buildConfig(): Plugin {
       if (config.build === undefined) config.build = {}
 
       // TODO: Init `config.build.target`
+      // https://github.com/vitejs/vite/pull/8843
 
       // ensure that static resources are loaded normally
       // TODO: Automatic splicing `build.assetsDir`
