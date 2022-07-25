@@ -1,14 +1,15 @@
 import type { Plugin } from 'vite'
-import useNodeJs, { Options as UseNodeJsOptions } from './use-node.js'
-import buildConfig from './build-config.js'
+import buildConfig from './build-config'
 import polyfillExports from './polyfill-exports'
+import {
+  type Options,
+  default as useNodeJs,
+} from './use-node.js'
 
-export interface Options extends UseNodeJsOptions { }
-
-export default function renderer(options?: Options): Plugin[] {
+export default function renderer(options: Options = {}): Plugin[] {
   return [
-    useNodeJs(options),
     buildConfig(),
     polyfillExports(),
+    useNodeJs(options),
   ]
 }
