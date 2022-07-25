@@ -43,28 +43,20 @@ Once `dev` or `build` npm-script executed will be generate named `dist` folder. 
 │   └── renderer/
 │
 ├── scripts
-│   ├── build.mjs             Develop script -> npm run build
-│   └── watch.mjs             Develop script -> npm run dev
+│   ├── build.mjs             npm run build
+│   └── watch.mjs             npm run dev
 │
 └── packages
     ├── main                  Main-process source code
     │   └── vite.config.ts
-    ├── preload               Preload-script source code
+    ├── preload               Preload-scripts source code
     │   └── vite.config.ts
     └── renderer              Renderer-process source code
         └── vite.config.ts
 ```
 
-## 🚨 `dependencies` vs `devDependencies`
+## FAQ
 
-- Put Node.js packages in `dependencies`
-- Put Web packages in `devDependencies`
-
-See more 👉 [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
-
-
-## 🚨 Node.js ESM packages
-
-**e.g.** `node-fetch` `execa` `got` ...
-
-[👉 Using Node.js ESM packages in Electron-Renderer](https://github.com/electron-vite/vite-plugin-electron-renderer#-nodejs-esm-packages)
+- [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#dependencies-vs-devdependencies)
+- [Using C/C++ native addons in Electron-Renderer](https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#load-nodejs-cc-native-modules)
+- [Node.js ESM packages](https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#nodejs-esm-packages) (e.g. `execa` `node-fetch`)
