@@ -16,7 +16,7 @@
     "electron": "^19.0.3",
     "electron-builder": "^23.0.3",
     "typescript": "^4.7.2",
-    "vite": "^2.9.9"
+    "vite": "^3.0.5"
   },
   "env": {
     "VITE_DEV_SERVER_HOST": "127.0.0.1",
