@@ -15,8 +15,8 @@
   "devDependencies": {
     "electron": "^20.1.1",
     "electron-builder": "^23.0.3",
-    "typescript": "^4.7.2",
-    "vite": "^3.0.5"
+    "typescript": "^4.7.4",
+    "vite": "^3.0.9"
   },
   "env": {
     "VITE_DEV_SERVER_HOST": "127.0.0.1",
