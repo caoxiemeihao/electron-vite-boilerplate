@@ -20,7 +20,7 @@ function watchMain(server) {
     mode: 'development',
     plugins: [isDebug ? null : {
       name: 'electron-main-watcher',
-      writeBundle() {
+      closeBundle() {
         if (process.electronApp) {
           process.electronApp.removeAllListeners()
           process.electronApp.kill()
@@ -44,7 +44,7 @@ function watchPreload(server) {
     mode: 'development',
     plugins: [{
       name: 'electron-preload-watcher',
-      writeBundle() {
+      closeBundle() {
         server.ws.send({ type: 'full-reload' })
       },
     }],
