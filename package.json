@@ -13,10 +13,10 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "electron": "^19.0.3",
-    "electron-builder": "^23.0.3",
-    "typescript": "^4.7.2",
-    "vite": "^3.0.5"
+    "electron": "^20.1.1",
+    "electron-builder": "^23.3.3",
+    "typescript": "^4.8.2",
+    "vite": "^3.0.9"
   },
   "env": {
     "VITE_DEV_SERVER_HOST": "127.0.0.1",
