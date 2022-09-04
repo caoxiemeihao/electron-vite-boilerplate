@@ -11,6 +11,7 @@
     "baseUrl": "./",
     "strict": true,
     "allowSyntheticDefaultImports": true,
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
+    "types": ["vite-plugin-electron/electron-env"]
   }
 }
