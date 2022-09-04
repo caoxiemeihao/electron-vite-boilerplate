@@ -18,8 +18,11 @@
     "typescript": "^4.7.4",
     "vite": "^3.0.9"
   },
-  "env": {
-    "VITE_DEV_SERVER_HOST": "127.0.0.1",
-    "VITE_DEV_SERVER_PORT": 9999
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_HOSTNAME": "127.0.0.1",
+      "VITE_DEV_SERVER_PORT": 9999,
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:9999"
+    }
   }
 }
