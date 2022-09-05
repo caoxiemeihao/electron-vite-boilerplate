@@ -39,10 +39,7 @@ async function createWindow() {
   if (app.isPackaged) {
     win.loadFile(join(__dirname, '../renderer/index.html'))
   } else {
-    // 🚧 Use ['ENV_NAME'] avoid vite:define plugin
-    const url = `http://${process.env['VITE_DEV_SERVER_HOST']}:${process.env['VITE_DEV_SERVER_PORT']}`
-
-    win.loadURL(url)
+    win.loadURL(process.env.VITE_DEV_SERVER_URL)
     // win.webContents.openDevTools({ mode: 'undocked' })
   }
 }
