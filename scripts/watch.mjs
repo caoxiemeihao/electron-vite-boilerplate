@@ -3,22 +3,27 @@ import { createServer, build } from 'vite'
 import electron from 'electron'
 
 const parsed = new URL(import.meta.url)
-const isDebug = parsed.searchParams.get('debug') // vscode
+
+if (parsed.searchParams.get('debug')) { // vscode
+  Object.assign(process.env, { VSCODE_DEBUG: 'true' })
+}
 
 /**
  * @type {(server: import('vite').ViteDevServer) => Promise<import('rollup').RollupWatcher>}
  */
 function watchMain(server) {
+  /** @type {import('net').AddressInfo} */
   const address = server.httpServer.address()
   const env = Object.assign(process.env, {
-    VITE_DEV_SERVER_HOST: address.address,
+    VITE_DEV_SERVER_HOSTNAME: address.address,
     VITE_DEV_SERVER_PORT: address.port,
+    VITE_DEV_SERVER_URL: `http://${address.address}:${address.port}`
   })
 
   return build({
     configFile: 'packages/main/vite.config.ts',
     mode: 'development',
-    plugins: [isDebug ? null : {
+    plugins: [process.env.VSCODE_DEBUG ? null : {
       name: 'electron-main-watcher',
       closeBundle() {
         if (process.electronApp) {
