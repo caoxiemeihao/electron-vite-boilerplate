@@ -9,7 +9,7 @@ export default defineConfig({
   base: './',
   plugins: [
     // Support use Node.js API in Electron-Renderer
-    // @see - https://github.com/electron-vite/vite-plugin-electron-renderer
+    // @see - https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer
     renderer(),
   ],
   build: {
