@@ -7,6 +7,17 @@ if (isWin7) app.disableHardwareAcceleration()
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
+// The built directory structure
+//
+// ├─┬ dist
+// │ ├─┬ main
+// │ │ └── index.cjs
+// │ ├─┬ preload
+// │ │ └── index.cjs
+// │ ├─┬ renderer
+// │ │ └── index.html
+process.env.DIST = join(__dirname, '..')
+
 if (!app.requestSingleInstanceLock()) {
   app.quit()
   process.exit(0)
@@ -20,7 +31,7 @@ async function createWindow() {
     width: 900,
     height: 700,
     webPreferences: {
-      preload: join(__dirname, '../preload/index.cjs'),
+      preload: join(process.env.DIST, 'preload/index.cjs'),
       contextIsolation: false,
       nodeIntegration: true,
     },
@@ -37,7 +48,7 @@ async function createWindow() {
   })
 
   if (app.isPackaged) {
-    win.loadFile(join(__dirname, '../renderer/index.html'))
+    win.loadFile(join(process.env.DIST, 'renderer/index.html'))
   } else {
     win.loadURL(process.env.VITE_DEV_SERVER_URL)
     // win.webContents.openDevTools({ mode: 'undocked' })
