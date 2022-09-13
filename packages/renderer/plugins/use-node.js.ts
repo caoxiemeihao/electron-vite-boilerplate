@@ -88,33 +88,59 @@ const electron = `
  * All exports module see https://www.electronjs.org -> API -> Renderer Process Modules
  */
 const electron = require("electron");
-const {
-  clipboard,
-  nativeImage,
-  shell,
-  contextBridge,
-  crashReporter,
-  ipcRenderer,
-  webFrame,
-  desktopCapturer,
-  deprecate,
-} = electron;
 
-export {
-  electron as default,
-  clipboard,
-  nativeImage,
-  shell,
-  contextBridge,
-  crashReporter,
-  ipcRenderer,
-  webFrame,
-  desktopCapturer,
-  deprecate,
+// Proxy in Worker
+let _ipcRenderer;
+if (typeof document === 'undefined') {
+  _ipcRenderer = {};
+  const keys = [
+    'invoke',
+    'postMessage',
+    'send',
+    'sendSync',
+    'sendTo',
+    'sendToHost',
+    // propertype
+    'addListener',
+    'emit',
+    'eventNames',
+    'getMaxListeners',
+    'listenerCount',
+    'listeners',
+    'off',
+    'on',
+    'once',
+    'prependListener',
+    'prependOnceListener',
+    'rawListeners',
+    'removeAllListeners',
+    'removeListener',
+    'setMaxListeners',
+  ];
+  for (const key of keys) {
+    _ipcRenderer[key] = () => {
+      throw new Error(
+        '"ipcRenderer" does not work in "Worker"\\n' +
+        'You can see https://github.com/electron-vite/vite-plugin-electron/issues/69'
+      );
+    };
+  }
+} else {
+  _ipcRenderer = electron.ipcRenderer;
 }
-`.trim()
 
-export default function useNodeJs(options: UseNodeJsOptions = {}): Plugin {
+export { electron as default };
+export const clipboard = electron.clipboard;
+export const contextBridge = electron.contextBridge;
+export const crashReporter = electron.crashReporter;
+export const ipcRenderer = _ipcRenderer;
+export const nativeImage = electron.nativeImage;
+export const shell = electron.shell;
+export const webFrame = electron.webFrame;
+export const deprecate = electron.deprecate;
+`
+
+export default function useNodeJs(options: UseNodeJsOptions = {}): Plugin[] {
   let env: ConfigEnv
   const builtins: string[] = []
   const dependencies: string[] = []
@@ -125,11 +151,19 @@ export default function useNodeJs(options: UseNodeJsOptions = {}): Plugin {
   // When `electron` files or folders exist in the root directory, it will cause Vite to incorrectly splicing the `/@fs/` prefix.
   // Here, use `\0` prefix avoid this behavior
   const prefix = '\0'
-
-  return {
-    name: 'vite-plugin-electron-renderer:use-node.js',
+  const pluginResolveId: Plugin = {
+    name: 'vite-plugin-electron-renderer:use-node.js[resolveId]',
     // Bypassing Vite's builtin 'vite:resolve' plugin
     enforce: 'pre',
+    resolveId(source) {
+      if (env.command === 'serve') {
+        if (ESM_deps.includes(source)) return // by vite-plugin-esmodule
+        if (CJS_modules.includes(source)) return prefix + source
+      }
+    },
+  }
+  const plugin: Plugin = {
+    name: 'vite-plugin-electron-renderer:use-node.js',
     // 🚧 Must be use config hook
     config(config, _env) {
       env = _env
@@ -212,12 +246,6 @@ export default function useNodeJs(options: UseNodeJsOptions = {}): Plugin {
       }
 
     },
-    resolveId(source) {
-      if (env.command === 'serve') {
-        if (ESM_deps.includes(source)) return // by vite-plugin-esmodule
-        if (CJS_modules.includes(source)) return prefix + source
-      }
-    },
     load(id) {
       if (env.command === 'serve') {
         /** 
@@ -263,10 +291,10 @@ export default function useNodeJs(options: UseNodeJsOptions = {}): Plugin {
             .filter(n => !keywords.includes(n))
             .map(attr => `export const ${attr} = _M_.${attr};`).join('\n')
           const nodeModuleCodeSnippet = `
-  ${requireModule}
-  ${exportDefault}
-  ${exportMembers}
-  `.trim()
+${requireModule}
+${exportDefault}
+${exportMembers}
+`
 
           moduleCache.set(id, nodeModuleCodeSnippet)
           return nodeModuleCodeSnippet
@@ -275,6 +303,11 @@ export default function useNodeJs(options: UseNodeJsOptions = {}): Plugin {
 
     },
   }
+
+  return [
+    pluginResolveId,
+    plugin,
+  ]
 }
 
 export function resolveModules(root: string, options: UseNodeJsOptions = {}) {
