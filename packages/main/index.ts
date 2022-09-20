@@ -1,12 +1,3 @@
-import os from 'os'
-import { join } from 'path'
-import { app, BrowserWindow } from 'electron'
-
-const isWin7 = os.release().startsWith('6.1')
-if (isWin7) app.disableHardwareAcceleration()
-
-process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
-
 // The built directory structure
 //
 // ├─┬ dist
@@ -17,6 +8,14 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 // │ ├─┬ renderer
 // │ │ └── index.html
 process.env.DIST = join(__dirname, '..')
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+
+import os from 'os'
+import { join } from 'path'
+import { app, BrowserWindow } from 'electron'
+
+const isWin7 = os.release().startsWith('6.1')
+if (isWin7) app.disableHardwareAcceleration()
 
 if (!app.requestSingleInstanceLock()) {
   app.quit()
