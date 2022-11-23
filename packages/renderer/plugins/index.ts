@@ -1,17 +1,24 @@
-import type { Plugin } from 'vite'
+import type { PluginOption } from 'vite'
 import buildConfig from './build-config'
-import polyfillExports from './polyfill-exports'
-import {
-  type UseNodeJsOptions,
-  default as useNodeJs,
-} from './use-node.js'
+import cjsShim from './cjs-shim'
+import optimizer, { type DepOptimizationConfig } from './optimizer'
 
-export interface Options extends UseNodeJsOptions { }
-
-export default function renderer(options: Options = {}): Plugin[] {
+export default function renderer(
+  options: {
+    /**
+     * @default false
+     */
+    nodeIntegration?: boolean
+    /**
+     * If the npm-package you are using is a Node.js package, then you need to Pre-Bundling it.
+     * @see https://vitejs.dev/guide/dep-pre-bundling.html
+     */
+    optimizeDeps?: DepOptimizationConfig
+  } = {}
+): PluginOption {
   return [
-    buildConfig(),
-    polyfillExports(),
-    ...useNodeJs(options),
+    buildConfig(options.nodeIntegration),
+    optimizer(options.optimizeDeps),
+    options.nodeIntegration && cjsShim(),
   ]
 }
