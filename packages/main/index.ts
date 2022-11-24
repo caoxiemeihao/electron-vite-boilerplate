@@ -46,10 +46,10 @@ async function createWindow() {
     win?.webContents.send('main-process-message', (new Date).toLocaleString())
   })
 
-  if (app.isPackaged) {
-    win.loadFile(join(process.env.DIST, 'renderer/index.html'))
-  } else {
+  if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL)
+  } else {
+    win.loadFile(join(process.env.DIST, 'renderer/index.html'))
     // win.webContents.openDevTools({ mode: 'undocked' })
   }
 }
