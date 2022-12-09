@@ -9,10 +9,11 @@ A Electron + Vite boilerplate of the nature of learning.
 [![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-boilerplate)](https://github.com/electron-vite/electron-vite-boilerplate/blob/main/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-boilerplate?color=fa6470)](https://github.com/electron-vite/electron-vite-boilerplate)
 
-- 📦 Out of the box  
-- 🚚 Include only necessary dependencies  
+- 👀 Inspired by [vite-electron-builder](https://github.com/cawa-93/vite-electron-builder), and it supports use Node.js in Renderer process.
+- 🚚 Include only necessary dependencies
+- 📦 Out of the box
 
-![screenshot](https://raw.githubusercontent.com/electron-vite/electron-vite-boilerplate/main/packages/renderer/public/screenshot-transparent.png)
+<img width="700" src="https://raw.githubusercontent.com/electron-vite/electron-vite-boilerplate/main/packages/renderer/public/screenshot-transparent.png">
 
 ## Run Setup
 
