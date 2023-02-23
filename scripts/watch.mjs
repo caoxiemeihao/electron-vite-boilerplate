@@ -15,9 +15,7 @@ function watchMain(server) {
   /** @type {import('net').AddressInfo} */
   const address = server.httpServer.address()
   const env = Object.assign(process.env, {
-    VITE_DEV_SERVER_HOSTNAME: address.address,
-    VITE_DEV_SERVER_PORT: address.port,
-    VITE_DEV_SERVER_URL: `http://${address.address}:${address.port}`
+    VITE_DEV_SERVER_URL: `http://localhost:${address.port}`
   })
 
   return build({
