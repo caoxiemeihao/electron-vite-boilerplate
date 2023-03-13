@@ -12,6 +12,7 @@
         "owner": "typescript",
         "fileLocation": "relative",
         "pattern": {
+          // TODO: correct "regexp"
           "regexp": "^([a-zA-Z]\\:\/?([\\w\\-]\/?)+\\.\\w+):(\\d+):(\\d+): (ERROR|WARNING)\\: (.*)$",
           "file": 1,
           "line": 3,
@@ -21,8 +22,8 @@
         },
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "^.*building for development.*$",
-          "endsPattern": "built in [0-9]*ms.*$",
+          "beginsPattern": "^.*VITE v.*  ready in \\d* ms.*$",
+          "endsPattern": "^.*\\[startup\\] Electron App.*$"
         }
       }
     }

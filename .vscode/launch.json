@@ -22,7 +22,7 @@
   "configurations": [
     {
       "name": "Debug Main Process",
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
       "windows": {
@@ -32,14 +32,22 @@
         "--remote-debugging-port=9229",
         "."
       ],
-      "envFile": "${workspaceFolder}/.vscode/.debug.env"
+      "envFile": "${workspaceFolder}/.vscode/.debug.env",
+      "console": "integratedTerminal"
     },
     {
       "name": "Debug Renderer Process",
       "port": 9229,
       "request": "attach",
-      "type": "pwa-chrome",
-      "timeout": 60000
+      "type": "chrome",
+      "timeout": 60000,
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceRoot}/node_modules/**",
+        "${workspaceRoot}/dist-electron/**",
+        // Skip files in host(VITE_DEV_SERVER_URL)
+        "http://127.0.0.1:3344/**"
+      ]
     },
   ]
 }
