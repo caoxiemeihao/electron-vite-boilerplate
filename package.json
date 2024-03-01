@@ -26,6 +26,6 @@
     "electron-builder": "^24.4.0",
     "typescript": "^5.0.3",
     "vite": "^5.0.10",
-    "vite-plugin-electron": "^0.15.4"
+    "vite-plugin-electron": "^0.28.2"
   }
 }
